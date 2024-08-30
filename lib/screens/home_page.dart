@@ -1,10 +1,44 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:whatsapp/constants/colors.dart';
+import 'package:http/http.dart' as http;
+import 'package:whatsapp/models/user.dart';
 
 import '../widgets/message.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late var users = [];
+
+  void fetchUsers() async {
+    const String baseUrl = 'https://reqres.in/api/users?page=2p';
+
+    final response = await http.get(Uri.parse(baseUrl));
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      final List<dynamic> userData = jsonData['data'];
+
+      setState(() {
+        users = userData.map((user) => User.fromJson(user)).toList();
+      });
+    } else {
+      print("Fetching failed");
+    }
+  }
+
+  @override
+  void initState() {
+    fetchUsers();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,13 +126,21 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
+          Container(
+            height: 500,
+            child: Expanded(
+              child: ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    final user = users[index];
+                    return Message(
+                      firstName: user.firstName,
+                      avatar: user.avatar,
+                      lastName: user.lastName,
+                    );
+                  }),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(

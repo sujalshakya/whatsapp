@@ -192,12 +192,6 @@ class ContactPage extends StatelessWidget {
               ),
             ],
           ),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
-          const Message(),
         ],
       ),
     );

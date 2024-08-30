@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/constants/colors.dart';
 
 class Message extends StatelessWidget {
-  const Message({
-    super.key,
-  });
+  final String firstName;
+  final String avatar;
+  final String lastName;
+
+  Message(
+      {super.key,
+      required this.firstName,
+      required this.avatar,
+      required this.lastName});
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +23,30 @@ class Message extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: AppColors.secondaryColor),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+                margin: const EdgeInsets.only(right: 16.0),
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundImage: NetworkImage(avatar),
+                )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Name",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Row(
+                    children: [
+                      Text(
+                        firstName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const Text(" "),
+                      Text(
+                        lastName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  Text("Message")
+                  const Text("Message")
                 ],
               ),
             ),
@@ -57,7 +71,6 @@ class Message extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container()
               ],
             )
           ],

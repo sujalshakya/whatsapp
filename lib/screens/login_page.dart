@@ -72,6 +72,7 @@ class LoginPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 child: TextFormField(
                   controller: passwordController,
+                  obscureText: true,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
