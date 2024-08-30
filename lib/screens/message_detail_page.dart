@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/constants/colors.dart';
 
-class MessageDetail extends StatefulWidget {
-  const MessageDetail({super.key});
+class MessageDetailPage extends StatefulWidget {
+  const MessageDetailPage({super.key});
 
   @override
-  State<MessageDetail> createState() => _MessageDetailState();
+  State<MessageDetailPage> createState() => _MessageDetailState();
 }
 
-class _MessageDetailState extends State<MessageDetail> {
+class _MessageDetailState extends State<MessageDetailPage> {
   final TextEditingController messageController = TextEditingController();
   List<String> messages = [
     "Hello how are you?",
@@ -19,34 +20,36 @@ class _MessageDetailState extends State<MessageDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00856e),
+        backgroundColor: AppColors.primaryColor,
         leading: Row(
           children: [
-            const Icon(Icons.arrow_back, color: Colors.white),
+            const Icon(Icons.arrow_back, color: AppColors.white),
             Container(
               height: 30,
               width: 30,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: Colors.white,
+                color: AppColors.white,
               ),
             ),
           ],
         ),
         title: const Column(
           children: [
-            Text("Name", style: TextStyle(color: Colors.white, fontSize: 18)),
-            Text("online", style: TextStyle(color: Colors.white, fontSize: 14)),
+            Text("Name",
+                style: TextStyle(color: AppColors.white, fontSize: 18)),
+            Text("online",
+                style: TextStyle(color: AppColors.white, fontSize: 14)),
           ],
         ),
         actions: const [
           Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.video_call, color: Colors.white)),
+              child: Icon(Icons.video_call, color: AppColors.white)),
           Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.phone, color: Colors.white)),
-          Icon(Icons.more_vert, color: Colors.white),
+              child: Icon(Icons.phone, color: AppColors.white)),
+          Icon(Icons.more_vert, color: AppColors.white),
         ],
       ),
       body: Container(
@@ -58,7 +61,7 @@ class _MessageDetailState extends State<MessageDetail> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: const Color.fromARGB(255, 164, 225, 255),
+                  color: AppColors.accentColor,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -71,7 +74,7 @@ class _MessageDetailState extends State<MessageDetail> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: const Color.fromARGB(255, 249, 248, 157),
+                  color: AppColors.secondaryColor,
                 ),
                 child: const Row(
                   children: [
@@ -93,7 +96,7 @@ class _MessageDetailState extends State<MessageDetail> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -114,7 +117,7 @@ class _MessageDetailState extends State<MessageDetail> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: const Color.fromARGB(255, 164, 225, 255),
+                  color: AppColors.accentColor,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -138,8 +141,8 @@ class _MessageDetailState extends State<MessageDetail> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: isUserMessage
-                              ? const Color.fromARGB(255, 192, 234, 144)
-                              : Colors.white,
+                              ? AppColors.secondaryColor
+                              : AppColors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         width: 150,
@@ -159,7 +162,7 @@ class _MessageDetailState extends State<MessageDetail> {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     width: 330,
@@ -210,8 +213,8 @@ class _MessageDetailState extends State<MessageDetail> {
                   onPressed: () {
                     Navigator.pushNamed(context, 'contact');
                   },
-                  backgroundColor: const Color(0xFF00856e),
-                  foregroundColor: Colors.white,
+                  backgroundColor: AppColors.primaryColor,
+                  foregroundColor: AppColors.white,
                   shape: const CircleBorder(),
                   child: const Icon(Icons.mic),
                 )

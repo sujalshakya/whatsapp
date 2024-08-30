@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/constants/colors.dart';
 
-class Contact extends StatelessWidget {
-  const Contact({super.key});
+import '../widgets/message.dart';
+
+class ContactPage extends StatelessWidget {
+  const ContactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00856e),
+        backgroundColor: AppColors.primaryColor,
         leading: const Icon(
           Icons.arrow_back,
-          color: Colors.white,
+          color: AppColors.white,
         ),
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Select contact",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(color: AppColors.white, fontSize: 16),
             ),
             Text(
               "256 contacts",
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: TextStyle(color: AppColors.white, fontSize: 12),
             )
           ],
         ),
@@ -30,12 +33,12 @@ class Contact extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.search,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
           Icon(
             Icons.more_vert,
-            color: Colors.white,
+            color: AppColors.white,
           )
         ],
       ),
@@ -60,19 +63,19 @@ class Contact extends StatelessWidget {
                     height: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: const Color(0xFF00856e)),
+                        color: AppColors.primaryColor),
                     child: const Icon(
                       Icons.people,
                       size: 28,
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "New Group",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 )
               ],
@@ -89,19 +92,19 @@ class Contact extends StatelessWidget {
                     height: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: const Color(0xFF00856e)),
+                        color: AppColors.primaryColor),
                     child: const Icon(
                       Icons.people,
                       size: 28,
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "New Contact",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
                 const Spacer(),
@@ -109,7 +112,7 @@ class Contact extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.qr_code,
-                    color: Color(0xFF00856e),
+                    color: AppColors.primaryColor,
                   ),
                 )
               ],
@@ -126,19 +129,19 @@ class Contact extends StatelessWidget {
                     height: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: const Color(0xFF00856e)),
+                        color: AppColors.primaryColor),
                     child: const Icon(
                       Icons.people,
                       size: 28,
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "New Community",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 )
               ],
@@ -163,19 +166,19 @@ class Contact extends StatelessWidget {
                     height: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: const Color(0xFF00856e)),
+                        color: AppColors.primaryColor),
                     child: const Icon(
                       Icons.house,
                       size: 28,
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Businesses",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 )
               ],
@@ -195,44 +198,6 @@ class Contact extends StatelessWidget {
           const Message(),
           const Message(),
           const Message(),
-          const Message(),
-        ],
-      ),
-    );
-  }
-}
-
-class Message extends StatelessWidget {
-  const Message({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-      child: Row(
-        children: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: const Color(0xFF00856e)),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Name",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text("Message")
-              ],
-            ),
-          ),
         ],
       ),
     );

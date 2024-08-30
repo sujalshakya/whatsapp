@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/screens/contact.dart';
-import 'package:whatsapp/screens/home.dart';
-import 'package:whatsapp/screens/login.dart';
-import 'package:whatsapp/screens/message_detail.dart';
-import 'package:whatsapp/screens/register.dart';
+import 'package:whatsapp/screens/contact_page.dart';
+import 'package:whatsapp/screens/home_page.dart';
+import 'package:whatsapp/screens/login_page.dart';
+import 'package:whatsapp/screens/message_detail_page.dart';
+import 'package:whatsapp/screens/register_page.dart';
+import 'package:whatsapp/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,14 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: myTheme,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       routes: {
-        'home': (context) => const Home(),
-        'login': (context) => Login(),
-        'register': (context) => Register(),
-        'message': (context) => MessageDetail(),
-        'contact': (context) => const Contact(),
+        'home': (context) => const HomePage(),
+        'login': (context) => LoginPage(),
+        'register': (context) => RegisterPage(),
+        'message': (context) => const MessageDetailPage(),
+        'contact': (context) => const ContactPage(),
       },
       initialRoute: 'login',
     );

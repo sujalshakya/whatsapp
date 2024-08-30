@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/constants/colors.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+import '../widgets/message.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        backgroundColor: const Color(0xFF00856e),
+        backgroundColor: AppColors.primaryColor,
         title: const Text(
           "WhatsApp",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: AppColors.white),
         ),
         centerTitle: false,
         leadingWidth: 0,
@@ -20,12 +23,12 @@ class Home extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.search,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
           Icon(
             Icons.more_vert,
-            color: Colors.white,
+            color: AppColors.white,
           )
         ],
       ),
@@ -33,7 +36,7 @@ class Home extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
-              color: Color(0xFF00856e),
+              color: AppColors.primaryColor,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +45,7 @@ class Home extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   child: Icon(
                     Icons.people,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
                 Column(
@@ -52,14 +55,14 @@ class Home extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text("CHATS",
-                              style: TextStyle(color: Colors.white)),
+                              style: TextStyle(color: AppColors.white)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
-                                color: Colors.white),
+                                color: AppColors.white),
                             width: 15,
                             height: 15,
                             child: const Padding(
@@ -76,14 +79,15 @@ class Home extends StatelessWidget {
                     Container(
                       height: 4,
                       width: 102,
-                      color: Colors.white,
+                      color: AppColors.white,
                     )
                   ],
                 ),
-                const Text("CALLS", style: TextStyle(color: Colors.white)),
+                const Text("CALLS", style: TextStyle(color: AppColors.white)),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: Text("STATUS", style: TextStyle(color: Colors.white)),
+                  child:
+                      Text("STATUS", style: TextStyle(color: AppColors.white)),
                 )
               ],
             ),
@@ -120,7 +124,7 @@ class Home extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -131,80 +135,15 @@ class Home extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, 'contact');
                   },
-                  backgroundColor: const Color(0xFF00856e),
-                  foregroundColor: Colors.white,
-                  shape: CircleBorder(),
+                  backgroundColor: AppColors.primaryColor,
+                  foregroundColor: AppColors.white,
+                  shape: const CircleBorder(),
                   child: const Icon(Icons.message),
                 ),
               ),
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Message extends StatelessWidget {
-  const Message({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, 'message');
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40), color: Colors.green),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Name",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text("Message")
-                ],
-              ),
-            ),
-            const Spacer(),
-            Column(
-              children: [
-                const Text("14:24"),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: Color(0xFF00856e)),
-                    width: 25,
-                    height: 25,
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 4, 0, 0),
-                      child: Text(
-                        "3",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-                Container()
-              ],
-            )
-          ],
-        ),
       ),
     );
   }
