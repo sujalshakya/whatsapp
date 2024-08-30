@@ -6,4 +6,4 @@ final ThemeData myTheme = ThemeData(
       bodyMedium: TextStyle(color: Colors.black),
       bodyLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
     ),
-    iconTheme: IconThemeData(color: Colors.white));
+    iconTheme: const IconThemeData(color: Colors.white));

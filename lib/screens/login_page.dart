@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/auth/login.dart';
 import 'package:whatsapp/constants/assets.dart';
 import 'package:whatsapp/constants/strings.dart';
 
 class LoginPage extends StatelessWidget {
-  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   LoginPage({super.key});
+  void login(BuildContext context) async {
+    final String email = emailController.text;
+    final String password = passwordController.text;
+
+    final bool success = await AuthService.login(email, password);
+
+    if (success) {
+      Navigator.pushNamed(context, 'home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Login failed. Please try again.'),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +45,7 @@ class LoginPage extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text(Strings.phoneNum),
+            child: Text(Strings.email),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -38,7 +54,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.black12,
                     borderRadius: BorderRadius.circular(12)),
                 child: TextField(
-                  controller: phoneNumberController,
+                  controller: emailController,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
@@ -67,7 +83,7 @@ class LoginPage extends StatelessWidget {
           Center(
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'home');
+                    login(context);
                   },
                   child: Text(
                     Strings.login,
