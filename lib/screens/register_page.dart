@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/auth/auth.dart';
 import 'package:whatsapp/constants/strings.dart';
 import '../constants/assets.dart';
 
 class RegisterPage extends StatelessWidget {
-  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   RegisterPage({super.key});
+
+  void register(BuildContext context) async {
+    final String email = emailController.text;
+    final String password = passwordController.text;
+    final String fullName = fullNameController.text;
+
+    final bool success = await AuthService.register(email, password, fullName);
+
+    if (success) {
+      Navigator.pushNamed(context, 'home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Registration failed. Please try again.'),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +48,7 @@ class RegisterPage extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text(Strings.phoneNum),
+            child: Text(Strings.name),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -41,7 +57,24 @@ class RegisterPage extends StatelessWidget {
                     color: Colors.black12,
                     borderRadius: BorderRadius.circular(12)),
                 child: TextField(
-                  controller: phoneNumberController,
+                  controller: fullNameController,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                )),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(Strings.email),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(12)),
+                child: TextField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
@@ -64,30 +97,13 @@ class RegisterPage extends StatelessWidget {
                   ),
                 )),
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(Strings.confirmPassword),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.circular(12)),
-                child: TextField(
-                  controller: confirmPasswordController,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                  ),
-                )),
-          ),
           const SizedBox(
             height: 20,
           ),
           Center(
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'login');
+                    register(context);
                   },
                   child: const Text(Strings.register,
                       style: TextStyle(color: Colors.black)))),

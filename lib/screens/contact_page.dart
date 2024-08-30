@@ -29,7 +29,7 @@ class _ContactPageState extends State<ContactPage> {
         users = userData.map((user) => User.fromJson(user)).toList();
       });
     } else {
-      print("Fetching failed");
+      debugPrint("Fetching failed");
     }
   }
 
@@ -75,158 +75,160 @@ class _ContactPageState extends State<ContactPage> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          const Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text("Create"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text("Create"),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: AppColors.primaryColor),
+                      child: const Icon(
+                        Icons.people,
+                        size: 28,
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "New Group",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: AppColors.primaryColor),
-                    child: const Icon(
-                      Icons.people,
-                      size: 28,
-                      color: AppColors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: AppColors.primaryColor),
+                      child: const Icon(
+                        Icons.people,
+                        size: 28,
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "New Group",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: AppColors.primaryColor),
-                    child: const Icon(
-                      Icons.people,
-                      size: 28,
-                      color: AppColors.white,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "New Contact",
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "New Contact",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ),
-                const Spacer(),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.qr_code,
-                    color: AppColors.primaryColor,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: AppColors.primaryColor),
-                    child: const Icon(
-                      Icons.people,
-                      size: 28,
-                      color: AppColors.white,
+                  const Spacer(),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.qr_code,
+                      color: AppColors.primaryColor,
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "New Community",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                )
-              ],
-            ),
-          ),
-          const Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text("Discover"),
+                  )
+                ],
               ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: AppColors.primaryColor),
-                    child: const Icon(
-                      Icons.house,
-                      size: 28,
-                      color: AppColors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: AppColors.primaryColor),
+                      child: const Icon(
+                        Icons.people,
+                        size: 28,
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "New Community",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const Row(
+              children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Businesses",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                )
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text("Discover"),
+                ),
               ],
             ),
-          ),
-          const Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text("Contacts on WhatsApp"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: AppColors.primaryColor),
+                      child: const Icon(
+                        Icons.house,
+                        size: 28,
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Businesses",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
-          Chats(users: users)
-        ],
+            ),
+            const Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text("Contacts on WhatsApp"),
+                ),
+              ],
+            ),
+            Chats(users: users)
+          ],
+        ),
       ),
     );
   }
