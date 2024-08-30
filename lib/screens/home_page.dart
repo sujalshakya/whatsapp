@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/constants/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:whatsapp/models/user.dart';
-
-import '../widgets/message.dart';
+import 'package:whatsapp/widgets/chats.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late var users = [];
+  late List users = [];
 
   void fetchUsers() async {
     const String baseUrl = 'https://reqres.in/api/users?page=2p';
@@ -126,21 +125,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Container(
-            height: 500,
-            child: Expanded(
-              child: ListView.builder(
-                  itemCount: users.length,
-                  itemBuilder: (context, index) {
-                    final user = users[index];
-                    return Message(
-                      firstName: user.firstName,
-                      avatar: user.avatar,
-                      lastName: user.lastName,
-                    );
-                  }),
-            ),
-          ),
+          Chats(users: users),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(

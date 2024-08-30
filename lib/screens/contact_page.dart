@@ -1,10 +1,43 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:whatsapp/constants/colors.dart';
+import 'package:whatsapp/models/user.dart';
+import 'package:http/http.dart' as http;
+import 'package:whatsapp/widgets/chats.dart';
 
-import '../widgets/message.dart';
-
-class ContactPage extends StatelessWidget {
+class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
+
+  @override
+  State<ContactPage> createState() => _ContactPageState();
+}
+
+class _ContactPageState extends State<ContactPage> {
+  late List users = [];
+
+  void fetchUsers() async {
+    const String baseUrl = 'https://reqres.in/api/users?page=2p';
+
+    final response = await http.get(Uri.parse(baseUrl));
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      final List<dynamic> userData = jsonData['data'];
+
+      setState(() {
+        users = userData.map((user) => User.fromJson(user)).toList();
+      });
+    } else {
+      print("Fetching failed");
+    }
+  }
+
+  @override
+  void initState() {
+    fetchUsers();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +225,7 @@ class ContactPage extends StatelessWidget {
               ),
             ],
           ),
+          Chats(users: users)
         ],
       ),
     );
