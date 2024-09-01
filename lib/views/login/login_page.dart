@@ -19,11 +19,15 @@ class LoginPage extends StatelessWidget {
     final bool success = await AuthService.login(email, password);
 
     if (success) {
-      Navigator.pushNamed(context, 'home');
+      if (context.mounted) {
+        Navigator.pushNamed(context, 'home');
+      }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Login failed. Please try again.'),
-      ));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Login failed. Please try again.'),
+        ));
+      }
     }
   }
 

@@ -22,11 +22,15 @@ class RegisterPage extends StatelessWidget {
     final bool success = await AuthService.register(email, password, fullName);
 
     if (success) {
-      Navigator.pushNamed(context, 'home');
+      if (context.mounted) {
+        Navigator.pushNamed(context, 'home');
+      }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Registration failed. Please try again.'),
-      ));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Registration failed. Please try again.'),
+        ));
+      }
     }
   }
 

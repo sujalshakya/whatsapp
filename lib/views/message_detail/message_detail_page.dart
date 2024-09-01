@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/base/constants/colors.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 
 class MessageDetailPage extends StatefulWidget {
@@ -38,16 +37,20 @@ class _MessageDetailState extends State<MessageDetailPage> {
         ),
         title: Column(
           children: [
-            Text("Name",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(color: Theme.of(context).colorScheme.surface)),
-            Text("online",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(color: Theme.of(context).colorScheme.surface)),
+            Row(
+              children: [
+                Text("Name",
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.surface)),
+              ],
+            ),
+            Row(
+              children: [
+                Text("online",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.surface)),
+              ],
+            ),
           ],
         ),
         actions: [
@@ -174,7 +177,7 @@ class _MessageDetailState extends State<MessageDetailPage> {
                               child: const Icon(Icons.send),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Icon(
                                 Icons.attach_file,
                                 color: Theme.of(context).colorScheme.onSurface,
