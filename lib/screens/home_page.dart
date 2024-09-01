@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:whatsapp/constants/api_urls.dart';
 import 'package:whatsapp/constants/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:whatsapp/models/user.dart';
@@ -17,9 +18,7 @@ class _HomePageState extends State<HomePage> {
   late List users = [];
 
   void fetchUsers() async {
-    const String baseUrl = 'https://reqres.in/api/users?page=2p';
-
-    final response = await http.get(Uri.parse(baseUrl));
+    final response = await http.get(Uri.parse(ApiUrls.fetch));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
@@ -72,7 +71,7 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.primaryColor,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
@@ -117,11 +116,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 const Text("CALLS", style: TextStyle(color: AppColors.white)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child:
-                      Text("STATUS", style: TextStyle(color: AppColors.white)),
-                )
+                const Text("STATUS", style: TextStyle(color: AppColors.white))
               ],
             ),
           ),
