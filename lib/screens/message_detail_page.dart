@@ -76,18 +76,25 @@ class _MessageDetailState extends State<MessageDetailPage> {
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.secondaryColor,
                 ),
-                child: const Row(
-                  children: [
-                    Icon(Icons.lock),
-                    Flexible(
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Messages to this chat and calls are now secured with end-to-end encryption. Tap for more info.",
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                        size: 16,
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Messages to this chat and calls are now secured with end-to-end encryption. Tap for more info.",
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -107,6 +114,7 @@ class _MessageDetailState extends State<MessageDetailPage> {
                 ),
               ),
             ),
+            //Divider
             Container(
               width: double.infinity,
               height: 0.5,
@@ -125,13 +133,13 @@ class _MessageDetailState extends State<MessageDetailPage> {
                 ),
               ),
             ),
+            //Messages are shown alternatively according to the index in list.
             Expanded(
               child: ListView.builder(
                 itemCount: messages.length,
                 itemBuilder: (context, index) {
                   final message = messages[index];
                   final isUserMessage = index.isOdd;
-
                   return Align(
                     alignment: isUserMessage
                         ? Alignment.centerRight

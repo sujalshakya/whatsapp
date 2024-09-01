@@ -11,6 +11,7 @@ class RegisterPage extends StatelessWidget {
 
   RegisterPage({super.key});
 
+//Register method
   void register(BuildContext context) async {
     final String email = emailController.text;
     final String password = passwordController.text;
@@ -36,6 +37,7 @@ class RegisterPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //Logo
             const Center(
               child: Padding(
                 padding: EdgeInsets.all(24.0),
@@ -86,8 +88,7 @@ class RegisterPage extends StatelessWidget {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
-                      }
-                      if (!value.contains('@') || !value.contains('.')) {
+                      } else if (!value.contains('@') || !value.contains('.')) {
                         return 'Please enter a viable email addresss';
                       }
 
@@ -111,21 +112,22 @@ class RegisterPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12)),
                   child: TextFormField(
                     validator: (value) {
-                      if (value!.length < 8) return 'length too low';
-                      if (!value.contains(RegExp(r"[a-z]"))) {
+                      if (value!.length < 8) {
+                        return 'length too low';
+                      } else if (!value.contains(RegExp(r"[a-z]"))) {
                         return 'small case letter is required';
-                      }
-                      if (!value.contains(RegExp(r"[A-Z]"))) {
+                      } else if (!value.contains(RegExp(r"[A-Z]"))) {
                         return 'capital letter is required';
-                      }
-                      if (!value.contains(RegExp(r"[0-9]"))) {
+                      } else if (!value.contains(RegExp(r"[0-9]"))) {
                         return 'an integer is required';
-                      }
-                      if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                      } else if (!value
+                          .contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
                         return 'a symbol is required';
                       }
+                      return null;
                     },
                     controller: passwordController,
+                    obscureText: true,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                     ),
@@ -138,9 +140,6 @@ class RegisterPage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if (_formKey2.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Processing Data')),
-                        );
                         register(context);
                       }
                     },

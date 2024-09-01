@@ -6,7 +6,7 @@ class Message extends StatelessWidget {
   final String avatar;
   final String lastName;
 
-  Message(
+  const Message(
       {super.key,
       required this.firstName,
       required this.avatar,

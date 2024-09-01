@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
         users = userData.map((user) => User.fromJson(user)).toList();
       });
     } else {
-      print("Fetching failed");
+      debugPrint("Fetching failed");
     }
   }
 

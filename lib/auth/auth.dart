@@ -18,9 +18,8 @@ class AuthService {
     );
 
     if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
-      debugPrint(responseData);
-
+      final Map<String, dynamic> responseData = jsonDecode(response.body);
+      debugPrint(responseData.toString());
       return true;
     }
     return false;
