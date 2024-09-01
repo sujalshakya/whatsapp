@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:whatsapp/constants/colors.dart';
-import 'package:whatsapp/models/user.dart';
-import 'package:http/http.dart' as http;
-import 'package:whatsapp/widgets/chats.dart';
+import 'package:whatsapp/base/service/fetch_service.dart';
+
+import 'package:whatsapp/base/widgets/chats.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -17,19 +14,13 @@ class _ContactPageState extends State<ContactPage> {
   late List users = [];
 
   void fetchUsers() async {
-    const String baseUrl = 'https://reqres.in/api/users?page=2p';
-
-    final response = await http.get(Uri.parse(baseUrl));
-
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
-      final List<dynamic> userData = jsonData['data'];
-
+    try {
+      final fetchedUsers = await FetchService.fetchUsers();
       setState(() {
-        users = userData.map((user) => User.fromJson(user)).toList();
+        users = fetchedUsers;
       });
-    } else {
-      debugPrint("Fetching failed");
+    } catch (error) {
+      debugPrint("Fetching failed: $error");
     }
   }
 
@@ -43,35 +34,41 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        leading: const Icon(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        leading: Icon(
           Icons.arrow_back,
-          color: AppColors.white,
+          color: Theme.of(context).colorScheme.surface,
         ),
-        title: const Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Select contact",
-              style: TextStyle(color: AppColors.white, fontSize: 16),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(color: Theme.of(context).colorScheme.surface),
             ),
             Text(
               "256 contacts",
-              style: TextStyle(color: AppColors.white, fontSize: 12),
+              style: Theme.of(context)
+                  .textTheme
+                  .labelSmall
+                  ?.copyWith(color: Theme.of(context).colorScheme.surface),
             )
           ],
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Icon(
               Icons.search,
-              color: AppColors.white,
+              color: Theme.of(context).colorScheme.surface,
             ),
           ),
           Icon(
             Icons.more_vert,
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surface,
           )
         ],
       ),
@@ -97,11 +94,11 @@ class _ContactPageState extends State<ContactPage> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: AppColors.primaryColor),
-                      child: const Icon(
+                          color: Theme.of(context).colorScheme.primary),
+                      child: Icon(
                         Icons.people,
                         size: 28,
-                        color: AppColors.white,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                   ),
@@ -109,7 +106,8 @@ class _ContactPageState extends State<ContactPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "New Group",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface),
                     ),
                   )
                 ],
@@ -126,11 +124,11 @@ class _ContactPageState extends State<ContactPage> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: AppColors.primaryColor),
-                      child: const Icon(
+                          color: Theme.of(context).colorScheme.primary),
+                      child: Icon(
                         Icons.people,
                         size: 28,
-                        color: AppColors.white,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                   ),
@@ -138,15 +136,16 @@ class _ContactPageState extends State<ContactPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "New Contact",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface),
                     ),
                   ),
                   const Spacer(),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.qr_code,
-                      color: AppColors.primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   )
                 ],
@@ -163,11 +162,11 @@ class _ContactPageState extends State<ContactPage> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: AppColors.primaryColor),
-                      child: const Icon(
+                          color: Theme.of(context).colorScheme.primary),
+                      child: Icon(
                         Icons.people,
                         size: 28,
-                        color: AppColors.white,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                   ),
@@ -175,9 +174,10 @@ class _ContactPageState extends State<ContactPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "New Community",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -200,11 +200,11 @@ class _ContactPageState extends State<ContactPage> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: AppColors.primaryColor),
-                      child: const Icon(
+                          color: Theme.of(context).colorScheme.primary),
+                      child: Icon(
                         Icons.house,
                         size: 28,
-                        color: AppColors.white,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                   ),
@@ -212,9 +212,10 @@ class _ContactPageState extends State<ContactPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Businesses",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -226,7 +227,7 @@ class _ContactPageState extends State<ContactPage> {
                 ),
               ],
             ),
-            Chats(users: users)
+            ChatsWidget(users: users)
           ],
         ),
       ),

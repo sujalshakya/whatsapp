@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/widgets/message.dart';
+import 'package:whatsapp/base/widgets/message.dart';
 
-class Chats extends StatelessWidget {
-  const Chats({
+class ChatsWidget extends StatelessWidget {
+  const ChatsWidget({
     super.key,
     required this.users,
   });
@@ -18,7 +18,7 @@ class Chats extends StatelessWidget {
             itemCount: users.length,
             itemBuilder: (context, index) {
               final user = users[index];
-              return Message(
+              return MessageWidget(
                 firstName: user.firstName,
                 avatar: user.avatar,
                 lastName: user.lastName,

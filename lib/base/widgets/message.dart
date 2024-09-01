@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/constants/colors.dart';
 
-class Message extends StatelessWidget {
+class MessageWidget extends StatelessWidget {
   final String firstName;
   final String avatar;
   final String lastName;
 
-  const Message(
+  const MessageWidget(
       {super.key,
       required this.firstName,
       required this.avatar,
@@ -37,12 +36,14 @@ class Message extends StatelessWidget {
                     children: [
                       Text(
                         firstName,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface),
                       ),
                       const Text(" "),
                       Text(
                         lastName,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ],
                   ),
@@ -59,14 +60,15 @@ class Message extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: AppColors.primaryColor),
+                        color: Theme.of(context).colorScheme.primary),
                     width: 25,
                     height: 25,
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 4, 0, 0),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 4, 0, 0),
                       child: Text(
                         "3",
-                        style: TextStyle(fontSize: 12, color: AppColors.white),
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                            color: Theme.of(context).colorScheme.surface),
                       ),
                     ),
                   ),

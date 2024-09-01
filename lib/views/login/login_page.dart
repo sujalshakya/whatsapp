@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/auth/auth.dart';
-import 'package:whatsapp/constants/assets.dart';
-import 'package:whatsapp/constants/strings.dart';
+import 'package:whatsapp/base/constants/assets.dart';
+import 'package:whatsapp/base/constants/strings.dart';
+import 'package:whatsapp/base/constants/validators.dart';
+import 'package:whatsapp/base/widgets/custom_textfield.dart';
+import 'package:whatsapp/views/login/service/login_service.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -51,49 +53,23 @@ class LoginPage extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Text(Strings.email),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: TextFormField(
-                    controller: emailController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                  )),
+            CustomTextField(
+              controller: emailController,
+              validator: (value) {
+                Validators.validateLogin(value);
+                return null;
+              },
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(Strings.password),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: TextFormField(
-                    controller: passwordController,
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                  )),
+            CustomTextField(
+              controller: passwordController,
+              validator: (value) {
+                Validators.validateLogin(value);
+                return null;
+              },
             ),
             const SizedBox(
               height: 20,
@@ -120,9 +96,9 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, 'register');
                   },
-                  child: const Text(
+                  child: Text(
                     Strings.register,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.labelLarge,
                   ),
                 )
               ],

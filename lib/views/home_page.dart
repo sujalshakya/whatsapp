@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:whatsapp/constants/api_urls.dart';
-import 'package:whatsapp/constants/colors.dart';
-import 'package:http/http.dart' as http;
-import 'package:whatsapp/models/user.dart';
-import 'package:whatsapp/widgets/chats.dart';
+import 'package:whatsapp/base/service/fetch_service.dart';
+
+import 'package:whatsapp/base/widgets/chats.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,17 +14,13 @@ class _HomePageState extends State<HomePage> {
   late List users = [];
 
   void fetchUsers() async {
-    final response = await http.get(Uri.parse(ApiUrls.fetch));
-
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
-      final List<dynamic> userData = jsonData['data'];
-
+    try {
+      final fetchedUsers = await FetchService.fetchUsers();
       setState(() {
-        users = userData.map((user) => User.fromJson(user)).toList();
+        users = fetchedUsers;
       });
-    } else {
-      debugPrint("Fetching failed");
+    } catch (error) {
+      debugPrint("Fetching failed: $error");
     }
   }
 
@@ -43,84 +35,101 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        backgroundColor: AppColors.primaryColor,
-        title: const Text(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
           "WhatsApp",
-          style: TextStyle(color: AppColors.white),
+          style: Theme.of(context)
+              .textTheme
+              .headlineMedium
+              ?.copyWith(color: Theme.of(context).colorScheme.surface),
         ),
         centerTitle: false,
         leadingWidth: 0,
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Icon(
               Icons.search,
-              color: AppColors.white,
+              color: Theme.of(context).colorScheme.surface,
             ),
           ),
           Icon(
             Icons.more_vert,
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surface,
           )
         ],
       ),
       body: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              color: AppColors.primaryColor,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Icon(
                     Icons.people,
-                    color: AppColors.white,
+                    color: Theme.of(context).colorScheme.surface,
                   ),
                 ),
                 Column(
                   children: [
                     Row(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Text("CHATS",
-                              style: TextStyle(color: AppColors.white)),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .surface)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
-                                color: AppColors.white),
+                                color: Theme.of(context).colorScheme.surface),
                             width: 15,
                             height: 15,
-                            child: const Padding(
-                              padding: EdgeInsets.fromLTRB(4, 0, 0, 3),
-                              child: Text(
-                                "3",
-                                style: TextStyle(fontSize: 12),
-                              ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(4, 0, 0, 3),
+                              child: Text("3",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall
+                                      ?.copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface)),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     Container(
                       height: 4,
                       width: 102,
-                      color: AppColors.white,
+                      color: Theme.of(context).colorScheme.surface,
                     )
                   ],
                 ),
-                const Text("CALLS", style: TextStyle(color: AppColors.white)),
-                const Text("STATUS", style: TextStyle(color: AppColors.white))
+                Text("CALLS",
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.surface)),
+                Text("STATUS",
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.surface))
               ],
             ),
           ),
-          Chats(users: users),
+          ChatsWidget(users: users),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
@@ -129,19 +138,22 @@ class _HomePageState extends State<HomePage> {
               width: 380,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.lock,
                   size: 12,
                 ),
-                Text(" Your personal messages are "),
+                const Text(" Your personal messages are "),
                 Text(
                   "end to end encrypted",
-                  style: TextStyle(color: Colors.blue),
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge
+                      ?.copyWith(color: Colors.blue),
                 )
               ],
             ),
@@ -157,8 +169,8 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.pushNamed(context, 'contact');
                   },
-                  backgroundColor: AppColors.primaryColor,
-                  foregroundColor: AppColors.white,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.surface,
                   shape: const CircleBorder(),
                   child: const Icon(Icons.message),
                 ),

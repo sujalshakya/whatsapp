@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/constants/colors.dart';
+import 'package:whatsapp/base/constants/colors.dart';
+import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 
 class MessageDetailPage extends StatefulWidget {
   const MessageDetailPage({super.key});
@@ -20,40 +21,49 @@ class _MessageDetailState extends State<MessageDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: Row(
           children: [
-            const Icon(Icons.arrow_back, color: AppColors.white),
+            Icon(Icons.arrow_back,
+                color: Theme.of(context).colorScheme.surface),
             Container(
               height: 30,
               width: 30,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: AppColors.white,
+                color: Theme.of(context).colorScheme.surface,
               ),
             ),
           ],
         ),
-        title: const Column(
+        title: Column(
           children: [
             Text("Name",
-                style: TextStyle(color: AppColors.white, fontSize: 18)),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: Theme.of(context).colorScheme.surface)),
             Text("online",
-                style: TextStyle(color: AppColors.white, fontSize: 14)),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(color: Theme.of(context).colorScheme.surface)),
           ],
         ),
-        actions: const [
+        actions: [
           Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.video_call, color: AppColors.white)),
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.video_call,
+                  color: Theme.of(context).colorScheme.surface)),
           Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.phone, color: AppColors.white)),
-          Icon(Icons.more_vert, color: AppColors.white),
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.phone,
+                  color: Theme.of(context).colorScheme.surface)),
+          Icon(Icons.more_vert, color: Theme.of(context).colorScheme.surface),
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(color: Color(0XFFDFD4C7)),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.onError),
         child: Column(
           children: [
             Padding(
@@ -61,7 +71,7 @@ class _MessageDetailState extends State<MessageDetailPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: AppColors.accentColor,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -74,18 +84,18 @@ class _MessageDetailState extends State<MessageDetailPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: AppColors.secondaryColor,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     children: [
                       Icon(
                         Icons.lock,
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.onSurface,
                         size: 16,
                       ),
-                      Flexible(
+                      const Flexible(
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
@@ -103,13 +113,15 @@ class _MessageDetailState extends State<MessageDetailPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
-                  color: AppColors.white,
+                  color: Theme.of(context).colorScheme.surface,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "1 UNREAD MESSAGE",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
                   ),
                 ),
               ),
@@ -118,14 +130,14 @@ class _MessageDetailState extends State<MessageDetailPage> {
             Container(
               width: double.infinity,
               height: 0.5,
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: AppColors.accentColor,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -133,44 +145,14 @@ class _MessageDetailState extends State<MessageDetailPage> {
                 ),
               ),
             ),
-            //Messages are shown alternatively according to the index in list.
-            Expanded(
-              child: ListView.builder(
-                itemCount: messages.length,
-                itemBuilder: (context, index) {
-                  final message = messages[index];
-                  final isUserMessage = index.isOdd;
-                  return Align(
-                    alignment: isUserMessage
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: isUserMessage
-                              ? AppColors.secondaryColor
-                              : AppColors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        width: 150,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(message),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            MessagesWidget(messages: messages),
             Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: AppColors.white,
+                      color: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     width: 330,
@@ -191,9 +173,12 @@ class _MessageDetailState extends State<MessageDetailPage> {
                               },
                               child: const Icon(Icons.send),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Icon(Icons.attach_file),
+                              child: Icon(
+                                Icons.attach_file,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                             ),
                             const Padding(
                               padding: EdgeInsets.all(8.0),
@@ -211,7 +196,10 @@ class _MessageDetailState extends State<MessageDetailPage> {
                         hintText: "Type a message",
                         contentPadding:
                             const EdgeInsets.symmetric(vertical: 16),
-                        hintStyle: const TextStyle(color: Colors.grey),
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(color: Colors.grey),
                         border: InputBorder.none,
                       ),
                     ),
@@ -221,8 +209,8 @@ class _MessageDetailState extends State<MessageDetailPage> {
                   onPressed: () {
                     Navigator.pushNamed(context, 'contact');
                   },
-                  backgroundColor: AppColors.primaryColor,
-                  foregroundColor: AppColors.white,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.surface,
                   shape: const CircleBorder(),
                   child: const Icon(Icons.mic),
                 )
