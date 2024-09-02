@@ -5,18 +5,18 @@ import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
 import 'package:whatsapp/views/login/service/login_service.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginView extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final loginKey = GlobalKey<FormState>();
 
-  LoginPage({super.key});
+  LoginView({super.key});
 
-  void login(BuildContext context) async {
+  void loginApiRequest(BuildContext context) async {
     final String email = emailController.text;
     final String password = passwordController.text;
 
-    final bool success = await AuthService.login(email, password);
+    final bool success = await AuthService.loginApiRequest(email, password);
 
     if (success) {
       if (context.mounted) {
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if (loginKey.currentState!.validate()) {
-                        login(context);
+                        loginApiRequest(context);
                       }
                     },
                     child: Text(

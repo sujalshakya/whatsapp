@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:whatsapp/base/constants/api_urls.dart';
+import 'package:whatsapp/base/secure_storage.dart';
 
 class AuthService {
-  static Future<bool> login(String email, String password) async {
+  static Future<bool> loginApiRequest(String email, String password) async {
     final response = await http.post(
       Uri.parse(ApiUrls.login),
       headers: <String, String>{
@@ -17,8 +17,9 @@ class AuthService {
     );
 
     if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = jsonDecode(response.body);
-      debugPrint(responseData.toString());
+      var data = jsonDecode(response.body.toString());
+      await SecureStorage().setToken('token', data['token']);
+
       return true;
     }
     return false;

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
+import 'package:whatsapp/base/secure_storage.dart';
 import 'package:whatsapp/base/service/fetch_service.dart';
 
 import 'package:whatsapp/base/widgets/chats.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeView> createState() => _HomePageViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageViewState extends State<HomeView> {
   late List users = [];
 
   void fetchUsers() async {
@@ -50,9 +51,15 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.search,
-              color: Theme.of(context).colorScheme.surface,
+            child: GestureDetector(
+              onTap: () async {
+                Navigator.pushReplacementNamed(context, 'login');
+                await SecureStorage().deleteToken('token');
+              },
+              child: Icon(
+                Icons.logout,
+                color: Theme.of(context).colorScheme.surface,
+              ),
             ),
           ),
           GestureDetector(

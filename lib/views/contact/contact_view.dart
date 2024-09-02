@@ -5,14 +5,14 @@ import 'package:whatsapp/base/service/fetch_service.dart';
 
 import 'package:whatsapp/base/widgets/chats.dart';
 
-class ContactPage extends StatefulWidget {
-  const ContactPage({super.key});
+class ContactView extends StatefulWidget {
+  const ContactView({super.key});
 
   @override
-  State<ContactPage> createState() => _ContactPageState();
+  State<ContactView> createState() => _ContactViewState();
 }
 
-class _ContactPageState extends State<ContactPage> {
+class _ContactViewState extends State<ContactView> {
   late List users = [];
 
   void fetchUsers() async {

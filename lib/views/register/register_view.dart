@@ -5,21 +5,22 @@ import 'package:whatsapp/base/widgets/custom_textfield.dart';
 import 'package:whatsapp/views/register/service/register_service.dart';
 import '../../base/constants/assets.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterView extends StatelessWidget {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final registerKey = GlobalKey<FormState>();
 
-  RegisterPage({super.key});
+  RegisterView({super.key});
 
 //Register method
-  void register(BuildContext context) async {
+  void registerApiRequest(BuildContext context) async {
     final String email = emailController.text;
     final String password = passwordController.text;
     final String fullName = fullNameController.text;
 
-    final bool success = await AuthService.register(email, password, fullName);
+    final bool success =
+        await AuthService.registerApiRequest(email, password, fullName);
 
     if (success) {
       if (context.mounted) {
@@ -101,7 +102,7 @@ class RegisterPage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if (registerKey.currentState!.validate()) {
-                        register(context);
+                        registerApiRequest(context);
                       }
                     },
                     child: Text(Strings.register,
