@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/base/provider/message_provider.dart';
+import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 
@@ -16,7 +16,7 @@ class MessageDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.onSecondary,
           leading: Row(
             children: [
               Icon(Icons.arrow_back,
@@ -220,7 +220,7 @@ class MessageDetailView extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, 'contact');
                     },
-                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    backgroundColor: Theme.of(context).colorScheme.onSecondary,
                     foregroundColor: Theme.of(context).colorScheme.surface,
                     shape: const CircleBorder(),
                     child: const Icon(Icons.mic),

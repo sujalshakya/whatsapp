@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:whatsapp/base/provider/message_provider.dart';
+import 'package:whatsapp/base/provider/user_provider.dart';
+import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
@@ -18,7 +19,8 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
         create: (context) => ThemeProvider(isDark: themeBool)),
-    ChangeNotifierProvider(create: (context) => MessageProvider())
+    ChangeNotifierProvider(create: (context) => MessageProvider()),
+    ChangeNotifierProvider(create: (context) => UserProvider()),
   ], child: const MyApp()));
 }
 

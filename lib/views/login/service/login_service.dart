@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:whatsapp/base/constants/api_urls.dart';
-import 'package:whatsapp/base/secure_storage.dart';
+import 'package:whatsapp/base/service/secure_storage.dart';
 
 class AuthService {
   static Future<bool> loginApiRequest(String email, String password) async {

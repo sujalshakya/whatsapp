@@ -60,7 +60,7 @@ class MessageWidget extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: Theme.of(context).colorScheme.primary),
+                        color: Theme.of(context).colorScheme.onSecondary),
                     width: 25,
                     height: 25,
                     child: Padding(

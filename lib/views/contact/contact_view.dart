@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
-import 'package:whatsapp/base/service/fetch_service.dart';
+import 'package:whatsapp/base/provider/user_provider.dart';
 
 import 'package:whatsapp/base/widgets/chats.dart';
 
@@ -13,30 +13,17 @@ class ContactView extends StatefulWidget {
 }
 
 class _ContactViewState extends State<ContactView> {
-  late List users = [];
-
-  void fetchUsers() async {
-    try {
-      final fetchedUsers = await FetchService.fetchUsers();
-      setState(() {
-        users = fetchedUsers;
-      });
-    } catch (error) {
-      debugPrint("Fetching failed: $error");
-    }
-  }
-
   @override
   void initState() {
-    fetchUsers();
     super.initState();
+    context.read<UserProvider>().fetchUsers();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.onSecondary,
         leading: Icon(
           Icons.arrow_back,
           color: Theme.of(context).colorScheme.surface,
@@ -101,7 +88,7 @@ class _ContactViewState extends State<ContactView> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Theme.of(context).colorScheme.primary),
+                          color: Theme.of(context).colorScheme.onSecondary),
                       child: Icon(
                         Icons.people,
                         size: 28,
@@ -131,7 +118,7 @@ class _ContactViewState extends State<ContactView> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Theme.of(context).colorScheme.primary),
+                          color: Theme.of(context).colorScheme.onSecondary),
                       child: Icon(
                         Icons.people,
                         size: 28,
@@ -152,7 +139,7 @@ class _ContactViewState extends State<ContactView> {
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.qr_code,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   )
                 ],
@@ -169,7 +156,7 @@ class _ContactViewState extends State<ContactView> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Theme.of(context).colorScheme.primary),
+                          color: Theme.of(context).colorScheme.onSecondary),
                       child: Icon(
                         Icons.people,
                         size: 28,
@@ -207,7 +194,7 @@ class _ContactViewState extends State<ContactView> {
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Theme.of(context).colorScheme.primary),
+                          color: Theme.of(context).colorScheme.onSecondary),
                       child: Icon(
                         Icons.house,
                         size: 28,
@@ -234,7 +221,7 @@ class _ContactViewState extends State<ContactView> {
                 ),
               ],
             ),
-            ChatsWidget(users: users)
+            ChatsWidget(users: context.read<UserProvider>().users)
           ],
         ),
       ),
