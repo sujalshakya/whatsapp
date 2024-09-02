@@ -17,16 +17,13 @@ class Validators {
   }
 
   static String? validatePassword(String? value) {
-    if (value!.length < 8) {
-      return 'length too low';
-    } else if (!value.contains(RegExp(r"[a-z]"))) {
-      return 'small case letter is required';
-    } else if (!value.contains(RegExp(r"[A-Z]"))) {
-      return 'capital letter is required';
-    } else if (!value.contains(RegExp(r"[0-9]"))) {
-      return 'an integer is required';
-    } else if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return 'a symbol is required';
+    if (value!.length < 8 ||
+        !value.contains(RegExp(r"[a-z]")) ||
+        !value.contains(RegExp(r"[A-Z]")) ||
+        (!value.contains(RegExp(r"[0-9]"))) ||
+        !value.contains(RegExp(r"[0-9]")) ||
+        !value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+      return 'Requirements not satisfied';
     }
     return null;
   }

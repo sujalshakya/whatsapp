@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/base/service/fetch_service.dart';
 
 import 'package:whatsapp/base/widgets/chats.dart';
@@ -66,10 +68,15 @@ class _ContactPageState extends State<ContactPage> {
               color: Theme.of(context).colorScheme.surface,
             ),
           ),
-          Icon(
-            Icons.more_vert,
-            color: Theme.of(context).colorScheme.surface,
-          )
+          GestureDetector(
+              onTap: () {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .changeTheme();
+              },
+              child: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).colorScheme.surface,
+              ))
         ],
       ),
       body: SingleChildScrollView(

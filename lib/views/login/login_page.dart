@@ -8,7 +8,7 @@ import 'package:whatsapp/views/login/service/login_service.dart';
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final loginKey = GlobalKey<FormState>();
 
   LoginPage({super.key});
 
@@ -31,11 +31,16 @@ class LoginPage extends StatelessWidget {
     }
   }
 
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Form(
-      key: _formKey,
+      key: loginKey,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +86,7 @@ class LoginPage extends StatelessWidget {
             Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                      if (loginKey.currentState!.validate()) {
                         login(context);
                       }
                     },

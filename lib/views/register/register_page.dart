@@ -9,7 +9,7 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final _formKey2 = GlobalKey<FormState>();
+  final registerKey = GlobalKey<FormState>();
 
   RegisterPage({super.key});
 
@@ -34,11 +34,17 @@ class RegisterPage extends StatelessWidget {
     }
   }
 
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    fullNameController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
-        key: _formKey2,
+        key: registerKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +103,7 @@ class RegisterPage extends StatelessWidget {
             Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey2.currentState!.validate()) {
+                      if (registerKey.currentState!.validate()) {
                         register(context);
                       }
                     },

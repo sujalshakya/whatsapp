@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 
 class MessageDetailPage extends StatefulWidget {
@@ -62,7 +64,15 @@ class _MessageDetailState extends State<MessageDetailPage> {
               padding: const EdgeInsets.all(8.0),
               child: Icon(Icons.phone,
                   color: Theme.of(context).colorScheme.surface)),
-          Icon(Icons.more_vert, color: Theme.of(context).colorScheme.surface),
+          GestureDetector(
+              onTap: () {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .changeTheme();
+              },
+              child: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).colorScheme.surface,
+              ))
         ],
       ),
       body: Container(

@@ -68,7 +68,7 @@ class MessageWidget extends StatelessWidget {
                       child: Text(
                         "3",
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            color: Theme.of(context).colorScheme.surface),
+                            color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ),
                   ),
