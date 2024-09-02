@@ -65,8 +65,7 @@ class LoginPage extends StatelessWidget {
             CustomTextField(
               controller: emailController,
               validator: (value) {
-                Validators.validateLogin(value);
-                return null;
+                return validateLogin(value);
               },
             ),
             const Padding(
@@ -76,8 +75,7 @@ class LoginPage extends StatelessWidget {
             CustomTextField(
               controller: passwordController,
               validator: (value) {
-                Validators.validateLogin(value);
-                return null;
+                return validateLogin(value);
               },
             ),
             const SizedBox(

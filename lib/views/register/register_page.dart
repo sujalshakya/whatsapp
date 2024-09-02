@@ -70,8 +70,7 @@ class RegisterPage extends StatelessWidget {
             CustomTextField(
               controller: fullNameController,
               validator: (value) {
-                Validators.validateLogin(value);
-                return null;
+                return validateLogin(value);
               },
             ),
             const Padding(
@@ -82,8 +81,7 @@ class RegisterPage extends StatelessWidget {
             CustomTextField(
               controller: emailController,
               validator: (value) {
-                Validators.validateEmail(value);
-                return null;
+                return validateEmail(value);
               },
             ),
             const Padding(
@@ -93,8 +91,7 @@ class RegisterPage extends StatelessWidget {
             CustomTextField(
               controller: passwordController,
               validator: (value) {
-                Validators.validatePassword(value);
-                return null;
+                return validatePassword(value);
               },
             ),
             const SizedBox(

@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           'message': (context) => const MessageDetailPage(),
           'contact': (context) => const ContactPage(),
         },
-        initialRoute: 'home',
+        initialRoute: 'login',
       );
     });
   }
