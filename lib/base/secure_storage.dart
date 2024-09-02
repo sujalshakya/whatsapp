@@ -8,8 +8,7 @@ class SecureStorage {
   }
 
   getToken(String key) async {
-    String? value = await storage.read(key: key);
-    print('data read : $value');
+    return await storage.read(key: key);
   }
 
   deleteToken(String key) async {

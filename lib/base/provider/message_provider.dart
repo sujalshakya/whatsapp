@@ -10,6 +10,7 @@ class MessageProvider extends ChangeNotifier {
   ];
 
   void addMessage() {
+    print("add");
     if (messageController.text.isNotEmpty) {
       messages.add(messageController.text);
       messageController.clear();
