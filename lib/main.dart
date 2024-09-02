@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           'home': (context) => const HomeView(),
           'login': (context) => LoginView(),
           'register': (context) => RegisterView(),
-          'message': (context) => const MessageDetailView(),
+          'message': (context) => MessageDetailView(),
           'contact': (context) => const ContactView(),
           'splash': (context) => const SplashView()
         },

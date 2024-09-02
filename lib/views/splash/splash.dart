@@ -19,13 +19,11 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> _startApp() async {
     final token = await SecureStorage().getToken('token');
-    print('data in navigating function: $token');
-    await Future.delayed(const Duration(seconds: 1));
     if (token == null) {
-      Timer(const Duration(seconds: 3),
+      Timer(const Duration(seconds: 1),
           () => Navigator.pushNamed(context, 'login'));
     } else {
-      Timer(const Duration(seconds: 3),
+      Timer(const Duration(seconds: 1),
           () => Navigator.pushNamed(context, 'home'));
     }
   }
