@@ -29,7 +29,7 @@ class RegisterView extends StatelessWidget {
     } else {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Registration failed. Please try again.'),
+          content: Text(Strings.registerFail),
         ));
       }
     }

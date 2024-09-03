@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
-
 import 'package:whatsapp/base/widgets/chats.dart';
 
 class ContactView extends StatefulWidget {

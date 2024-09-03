@@ -7,7 +7,7 @@ import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
 import 'package:whatsapp/views/login/login_view.dart';
-import 'package:whatsapp/views/splash/splash.dart';
+import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
 import 'package:whatsapp/views/register/register_view.dart';
 
