@@ -1,20 +1,20 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:whatsapp/base/models/user.dart';
-import 'package:http/http.dart' as http;
 
 class FetchService {
   static fetchUsers() async {
+    final dio = Dio();
     const String baseUrl = 'https://reqres.in/api/users?page=2p';
+    try {
+      final response = await dio.get((baseUrl));
 
-    final response = await http.get(Uri.parse(baseUrl));
-
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
+      final jsonData = json.decode(response.toString());
       final List<dynamic> userData = jsonData['data'];
       return userData.map((user) => User.fromJson(user)).toList();
-    } else {
-      throw Exception("Failed to fetch users");
+    } catch (e) {
+      print(e);
     }
   }
 }

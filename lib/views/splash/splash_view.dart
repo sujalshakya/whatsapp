@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp/base/service/secure_storage.dart';
+import 'package:whatsapp/base/secure_storage.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
