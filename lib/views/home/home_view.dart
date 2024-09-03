@@ -5,22 +5,13 @@ import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/service/secure_storage.dart';
 import 'package:whatsapp/base/widgets/chats.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomePageViewState();
-}
-
-class _HomePageViewState extends State<HomeView> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<UserProvider>().fetchUsers();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -127,6 +118,9 @@ class _HomePageViewState extends State<HomeView> {
               ),
             ],
           ),
+          Container(),
+          Container(),
+          Container(),
         ]),
       ),
     );

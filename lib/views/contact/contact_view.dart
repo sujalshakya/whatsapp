@@ -4,22 +4,13 @@ import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/widgets/chats.dart';
 
-class ContactView extends StatefulWidget {
+class ContactView extends StatelessWidget {
   const ContactView({super.key});
 
   @override
-  State<ContactView> createState() => _ContactViewState();
-}
-
-class _ContactViewState extends State<ContactView> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<UserProvider>().fetchUsers();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onSecondary,
