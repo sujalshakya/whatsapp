@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/widgets/message.dart';
 
 class ChatsWidget extends StatelessWidget {
@@ -11,6 +13,8 @@ class ChatsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
     return SizedBox(
       height: 500,
       child: ListView.builder(

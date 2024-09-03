@@ -10,8 +10,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
     return DefaultTabController(
       length: 4,
       child: Scaffold(
