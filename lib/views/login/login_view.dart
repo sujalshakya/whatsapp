@@ -20,7 +20,7 @@ class LoginView extends StatelessWidget {
 
     if (success) {
       if (context.mounted) {
-        Navigator.pushNamed(context, 'home');
+        Navigator.pushReplacementNamed(context, 'home');
       }
     } else {
       if (context.mounted) {
@@ -101,7 +101,7 @@ class LoginView extends StatelessWidget {
                 const Text("Don't have an account? "),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, 'register');
+                    Navigator.pushReplacementNamed(context, 'register');
                   },
                   child: Text(
                     Strings.register,

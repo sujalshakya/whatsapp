@@ -24,7 +24,7 @@ class RegisterView extends StatelessWidget {
 
     if (success) {
       if (context.mounted) {
-        Navigator.pushNamed(context, 'home');
+        Navigator.pushReplacementNamed(context, 'home');
       }
     } else {
       if (context.mounted) {
@@ -116,7 +116,7 @@ class RegisterView extends StatelessWidget {
                 const Text("Already have an account? "),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, 'login');
+                    Navigator.pushReplacementNamed(context, 'login');
                   },
                   child: Text(
                     Strings.login,

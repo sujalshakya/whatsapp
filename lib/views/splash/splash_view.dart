@@ -21,15 +21,15 @@ class _SplashViewState extends State<SplashView> {
     final token = await SecureStorage().getToken('token');
     if (token == null) {
       Timer(const Duration(seconds: 1),
-          () => Navigator.pushNamed(context, 'login'));
+          () => Navigator.pushReplacementNamed(context, 'login'));
     } else {
       Timer(const Duration(seconds: 1),
-          () => Navigator.pushNamed(context, 'home'));
+          () => Navigator.pushReplacementNamed(context, 'home'));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const CircularProgressIndicator();
   }
 }
