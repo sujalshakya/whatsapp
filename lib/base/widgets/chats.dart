@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:whatsapp/base/models/user.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/widgets/message.dart';
 
@@ -9,7 +10,7 @@ class ChatsWidget extends StatelessWidget {
     required this.users,
   });
 
-  final List users;
+  final List<User> users;
 
   @override
   Widget build(BuildContext context) {

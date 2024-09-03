@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           'contact': (context) => const ContactView(),
           'splash': (context) => const SplashView()
         },
-        initialRoute: 'splash',
+        initialRoute: 'home',
       );
     });
   }

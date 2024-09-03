@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/base/models/user.dart';
 import 'package:whatsapp/base/service/fetch_service.dart';
 
 class UserProvider extends ChangeNotifier {
-  late List users = [];
+  late List<User> users = [];
   bool fetch = true;
 
   void fetchUsers() async {
