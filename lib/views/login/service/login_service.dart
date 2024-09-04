@@ -7,9 +7,7 @@ import 'package:whatsapp/base/service/secure_storage.dart';
 class AuthService {
   static Future<bool> loginApiRequest(String email, String password) async {
     final dio = Dio(BaseOptions());
-    dio
-      ..interceptors.add(DioInterceptor())
-      ..interceptors.add(LogInterceptor());
+    dio.interceptors.add(DioInterceptor());
 
     final response = await dio.post(
       (ApiUrls.login),

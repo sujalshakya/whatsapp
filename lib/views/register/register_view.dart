@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
-import 'package:whatsapp/views/register/service/register_service.dart';
+import 'package:whatsapp/views/register/provider/register_provider.dart';
 import '../../base/constants/assets.dart';
 
 class RegisterView extends StatelessWidget {
@@ -12,28 +13,6 @@ class RegisterView extends StatelessWidget {
   final registerKey = GlobalKey<FormState>();
 
   RegisterView({super.key});
-
-//Register method
-  void registerApiRequest(BuildContext context) async {
-    final String email = emailController.text;
-    final String password = passwordController.text;
-    final String fullName = fullNameController.text;
-
-    final bool success =
-        await AuthService.registerApiRequest(email, password, fullName);
-
-    if (success) {
-      if (context.mounted) {
-        Navigator.pushReplacementNamed(context, 'home');
-      }
-    } else {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(Strings.registerFail),
-        ));
-      }
-    }
-  }
 
   void dispose() {
     emailController.dispose();
@@ -102,7 +81,12 @@ class RegisterView extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if (registerKey.currentState!.validate()) {
-                        registerApiRequest(context);
+                        context.read<RegisterProvider>().registerApiRequest(
+                              context,
+                              emailController.text,
+                              passwordController.text,
+                              fullNameController.text,
+                            );
                       }
                     },
                     child: Text(Strings.register,

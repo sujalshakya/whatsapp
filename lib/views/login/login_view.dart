@@ -3,7 +3,8 @@ import 'package:whatsapp/base/constants/assets.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
-import 'package:whatsapp/views/login/service/login_service.dart';
+import 'package:provider/provider.dart';
+import 'package:whatsapp/views/login/provider/login_provider.dart';
 
 class LoginView extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -11,25 +12,6 @@ class LoginView extends StatelessWidget {
   final loginKey = GlobalKey<FormState>();
 
   LoginView({super.key});
-
-  void loginApiRequest(BuildContext context) async {
-    final String email = emailController.text;
-    final String password = passwordController.text;
-
-    final bool success = await AuthService.loginApiRequest(email, password);
-
-    if (success) {
-      if (context.mounted) {
-        Navigator.pushReplacementNamed(context, 'home');
-      }
-    } else {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(Strings.loginFail),
-        ));
-      }
-    }
-  }
 
   void dispose() {
     emailController.dispose();
@@ -85,7 +67,8 @@ class LoginView extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if (loginKey.currentState!.validate()) {
-                        loginApiRequest(context);
+                        context.read<LoginProvider>().loginApiRequest(context,
+                            emailController.text, passwordController.text);
                       }
                     },
                     child: Text(

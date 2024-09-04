@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
+import 'package:whatsapp/views/login/provider/login_provider.dart';
 import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
 import 'package:whatsapp/views/login/login_view.dart';
+import 'package:whatsapp/views/register/provider/register_provider.dart';
+import 'package:whatsapp/views/splash/provider/splash_provider.dart';
 import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
 import 'package:whatsapp/views/register/register_view.dart';
@@ -21,6 +24,9 @@ void main() async {
         create: (context) => ThemeProvider(isDark: themeBool)),
     ChangeNotifierProvider(create: (context) => MessageProvider()),
     ChangeNotifierProvider(create: (context) => UserProvider()),
+    ChangeNotifierProvider(create: (context) => SplashProvider()),
+    ChangeNotifierProvider(create: (context) => LoginProvider()),
+    ChangeNotifierProvider(create: (context) => RegisterProvider()),
   ], child: const MyApp()));
 }
 
