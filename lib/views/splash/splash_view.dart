@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:whatsapp/base/constants/assets.dart';
 import 'package:whatsapp/base/service/secure_storage.dart';
 
 class SplashView extends StatefulWidget {
@@ -30,6 +31,15 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator();
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(24.0),
+        child: Image(
+          image: AssetImage(Assets.logo),
+          width: 100,
+          height: 100,
+        ),
+      ),
+    );
   }
 }

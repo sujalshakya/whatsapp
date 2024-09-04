@@ -22,3 +22,20 @@ class User {
     );
   }
 }
+
+class UserData {
+  List<User>? data;
+
+  UserData({
+    this.data,
+  });
+
+  UserData.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      data = <User>[];
+      json['data'].forEach((v) {
+        data!.add(User.fromJson(v));
+      });
+    }
+  }
+}

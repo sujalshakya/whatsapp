@@ -21,6 +21,12 @@ class DioInterceptor extends Interceptor {
   }
 
   @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    debugPrint(response.statusCode.toString());
+    super.onResponse(response, handler);
+  }
+
+  @override
   Future<void> onError(err, handler) async {
     debugPrint(err.toString());
     if (err.response?.statusCode == 400) {

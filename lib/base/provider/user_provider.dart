@@ -3,7 +3,7 @@ import 'package:whatsapp/base/models/user.dart';
 import 'package:whatsapp/base/service/fetch_service.dart';
 
 class UserProvider extends ChangeNotifier {
-  late List<User> users = [];
+  late UserData users = UserData(data: []);
   bool fetch = true;
 
   void fetchUsers() async {

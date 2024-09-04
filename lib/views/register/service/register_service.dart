@@ -11,16 +11,15 @@ class AuthService {
     dio
       ..interceptors.add(DioInterceptor())
       ..interceptors.add(LogInterceptor());
-    ;
-
+    final registerRequestData = jsonEncode(<String, String>{
+      'email': email,
+      'password': password,
+      'full_name': fullName
+    });
     try {
       final response = await dio.post(
         (ApiUrls.signup),
-        data: jsonEncode(<String, String>{
-          'email': email,
-          'password': password,
-          'full_name': fullName
-        }),
+        data: registerRequestData,
       );
       final Map<String, String> responseData = jsonDecode(response.toString());
       debugPrint(responseData.toString());

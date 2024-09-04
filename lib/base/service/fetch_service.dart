@@ -9,16 +9,11 @@ import 'package:whatsapp/base/service/interceptor.dart';
 class FetchService {
   static fetchUsers() async {
     final dio = Dio();
-    dio
-      ..interceptors.add(DioInterceptor())
-      ..interceptors.add(LogInterceptor());
-    ;
+    dio.interceptors.add(DioInterceptor());
     try {
       final response = await dio.get((ApiUrls.fetch));
-      final jsonData = json.decode(response.toString());
-      final List userData = jsonData['data'];
-      return userData.map((user) => User.fromJson(user)).toList();
-    } catch (e) {
+      return UserData.fromJson(response.data);
+    } on DioException catch (e) {
       debugPrint(e.toString());
     }
   }

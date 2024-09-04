@@ -10,7 +10,7 @@ class ChatsWidget extends StatelessWidget {
     required this.users,
   });
 
-  final List<User> users;
+  final UserData users;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class ChatsWidget extends StatelessWidget {
     return SizedBox(
       height: 500,
       child: ListView.builder(
-          itemCount: users.length,
+          itemCount: users.data!.length,
           itemBuilder: (context, index) {
-            final user = users[index];
+            final user = users.data![index];
             return MessageWidget(
               firstName: user.firstName,
               avatar: user.avatar,
