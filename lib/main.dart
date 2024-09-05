@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/route.dart';
 import 'package:whatsapp/views/login/viewmodel/login_viewmodel.dart';
-import 'package:whatsapp/views/message_detail/viewmodel/message_provider.dart';
+import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
           'home': (context) => const HomeView(),
           'login': (context) => const LoginView(),
           'register': (context) => const RegisterView(),
-          'message': (context) => MessageDetailView(),
+          'message': (context) => const MessageDetailView(),
           'contact': (context) => const ContactView(),
           'splash': (context) => const SplashView()
         },

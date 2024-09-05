@@ -17,7 +17,7 @@ Route<dynamic>? routes(RouteSettings settings) {
     case 'register':
       return MaterialPageRoute(builder: (_) => const RegisterView());
     case 'message':
-      return MaterialPageRoute(builder: (_) => MessageDetailView());
+      return MaterialPageRoute(builder: (_) => const MessageDetailView());
     case 'contact':
       return MaterialPageRoute(builder: (_) => const ContactView());
     case 'splash':

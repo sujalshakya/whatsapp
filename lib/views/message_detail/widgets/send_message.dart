@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/views/message_detail/viewmodel/message_provider.dart';
+import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
 
 class SendMessage extends StatelessWidget {
   const SendMessage({
     super.key,
-    required this.messageController,
   });
-
-  final TextEditingController messageController;
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +20,14 @@ class SendMessage extends StatelessWidget {
             ),
             width: 330,
             child: TextField(
-              controller: messageController,
+              controller: context.watch<MessageViewModel>().messageController,
               decoration: InputDecoration(
                 suffixIcon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GestureDetector(
                       onTap: () {
-                        if (messageController.text.isNotEmpty) {
-                          context
-                              .read<MessageViewModel>()
-                              .addMessage(messageController.text);
-                          messageController.clear();
-                        }
+                        context.read<MessageViewModel>().addMessage();
                       },
                       child: const Icon(Icons.send),
                     ),
