@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:whatsapp/base/constants/api_urls.dart';
-import 'package:whatsapp/base/service/interceptor.dart';
+import 'package:whatsapp/base/network/dio.dart';
 import 'package:whatsapp/base/service/secure_storage.dart';
 
 class AuthService {
   static Future<bool> loginApiRequest(String email, String password) async {
-    final dio = Dio(BaseOptions());
-    dio.interceptors.add(DioInterceptor());
+    final dio = DioInstance().dio;
 
     final response = await dio.post(
       (ApiUrls.login),
