@@ -15,7 +15,7 @@ Route<dynamic>? routes(RouteSettings settings) {
     case 'login':
       return MaterialPageRoute(builder: (_) => const LoginView());
     case 'register':
-      return MaterialPageRoute(builder: (_) => RegisterView());
+      return MaterialPageRoute(builder: (_) => const RegisterView());
     case 'message':
       return MaterialPageRoute(builder: (_) => MessageDetailView());
     case 'contact':

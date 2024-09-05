@@ -17,14 +17,18 @@ class RegisterViewModel extends ChangeNotifier {
   }
 
   void registerApiRequest() async {
-    final bool register = await AuthService.registerApiRequest(
-        emailController.text, passwordController.text, fullNameController.text);
+    if (registerKey.currentState!.validate()) {
+      final bool register = await AuthService.registerApiRequest(
+          emailController.text,
+          passwordController.text,
+          fullNameController.text);
 
-    if (register) {
-      navigatorKey.currentState!.pushNamed('login');
-    } else {
-      debugPrint("registration failed");
+      if (register) {
+        navigatorKey.currentState!.pushNamed('login');
+      } else {
+        debugPrint("registration failed");
+      }
+      notifyListeners();
     }
-    notifyListeners();
   }
 }

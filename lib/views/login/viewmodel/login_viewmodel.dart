@@ -15,17 +15,19 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   void loginApiRequest() async {
-    final bool login = await AuthService.loginApiRequest(
-        emailController.text, passwordController.text);
+    if (loginKey.currentState!.validate()) {
+      final bool login = await AuthService.loginApiRequest(
+          emailController.text, passwordController.text);
 
-    if (login) {
-      navigatorKey.currentState!.pushNamed('home');
-      notifyListeners();
-    } else {
-      debugPrint("login failed");
+      if (login) {
+        navigatorKey.currentState!.pushNamed('home');
+        notifyListeners();
+      } else {
+        debugPrint("login failed");
+        notifyListeners();
+      }
+
       notifyListeners();
     }
-
-    notifyListeners();
   }
 }

@@ -58,13 +58,7 @@ class RegisterView extends StatelessWidget {
             Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      if (context
-                          .read<RegisterViewModel>()
-                          .registerKey
-                          .currentState!
-                          .validate()) {
-                        context.read<RegisterViewModel>().registerApiRequest();
-                      }
+                      context.read<RegisterViewModel>().registerApiRequest();
                     },
                     child: Text(Strings.register,
                         style: Theme.of(context).textTheme.bodyMedium))),

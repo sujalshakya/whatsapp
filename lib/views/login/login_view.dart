@@ -48,13 +48,7 @@ class LoginView extends StatelessWidget {
             Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      if (context
-                          .read<LoginViewModel>()
-                          .loginKey
-                          .currentState!
-                          .validate()) {
-                        context.read<LoginViewModel>().loginApiRequest();
-                      }
+                      context.read<LoginViewModel>().loginApiRequest();
                     },
                     child: Text(
                       Strings.login,
