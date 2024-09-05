@@ -9,7 +9,7 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Navigates according to the variable from splash_viewmodel after 1 second.
+    /// Navigates according to the variable from splash_viewmodel after 1 second.
     WidgetsBinding.instance.addPostFrameCallback(
         (_) => context.read<SplashViewModel>().startApp());
     Timer(

@@ -63,6 +63,7 @@ class HomeBody extends StatelessWidget {
           ),
         ],
       ),
+      // A list of pages in tabbar yet to be made.
       const SizedBox(),
       const SizedBox(),
       const SizedBox(),

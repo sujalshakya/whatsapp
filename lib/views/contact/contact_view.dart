@@ -56,6 +56,7 @@ class ContactView extends StatelessWidget {
               ))
         ],
       ),
+      // Body in different file.
       body: const ContactBody(),
     );
   }

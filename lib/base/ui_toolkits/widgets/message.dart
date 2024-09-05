@@ -47,6 +47,7 @@ class MessageWidget extends StatelessWidget {
             const Spacer(),
             Column(
               children: [
+                // Static time
                 const Text("14:24"),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
@@ -56,6 +57,7 @@ class MessageWidget extends StatelessWidget {
                         color: Theme.of(context).colorScheme.onSecondary),
                     width: 25,
                     height: 25,
+                    // Static number of messages unread.
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 4, 0, 0),
                       child: Text(
