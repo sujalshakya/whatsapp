@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
+import 'package:whatsapp/views/message_detail/widgets/send_message.dart';
 
 class MessageDetailView extends StatelessWidget {
   MessageDetailView({super.key});
@@ -156,77 +157,7 @@ class MessageDetailView extends StatelessWidget {
               ),
               MessagesWidget(
                   messages: context.watch<MessageProvider>().messages),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surface,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      width: 330,
-                      child: TextField(
-                        controller: messageController,
-                        decoration: InputDecoration(
-                          suffixIcon: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  if (messageController.text.isNotEmpty) {
-                                    context
-                                        .read<MessageProvider>()
-                                        .addMessage(messageController.text);
-                                    messageController.clear();
-                                  }
-                                },
-                                child: const Icon(Icons.send),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.attach_file,
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface,
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(Icons.camera_alt),
-                              ),
-                            ],
-                          ),
-                          icon: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.emoji_emotions_outlined,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          hintText: "Type a message",
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 16),
-                          hintStyle: Theme.of(context)
-                              .textTheme
-                              .labelLarge
-                              ?.copyWith(color: Colors.grey),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'contact');
-                    },
-                    backgroundColor: Theme.of(context).colorScheme.onSecondary,
-                    foregroundColor: Theme.of(context).colorScheme.surface,
-                    shape: const CircleBorder(),
-                    child: const Icon(Icons.mic),
-                  )
-                ],
-              )
+              SendMessage(messageController: messageController)
             ],
           ),
         ));

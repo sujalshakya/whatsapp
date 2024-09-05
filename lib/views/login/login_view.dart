@@ -1,42 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/base/constants/assets.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/views/login/provider/login_provider.dart';
+import 'package:whatsapp/base/widgets/logo.dart';
+import 'package:whatsapp/views/login/viewmodel/login_viewmodel.dart';
 
 class LoginView extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final loginKey = GlobalKey<FormState>();
-
-  LoginView({super.key});
-
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-  }
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Form(
-      key: loginKey,
+      key: context.read<LoginViewModel>().loginKey,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.all(24.0),
-                child: Image(
-                  image: AssetImage(Assets.logo),
-                  width: 100,
-                  height: 100,
-                ),
-              ),
-            ),
+            const Logo(),
             const SizedBox(
               height: 30,
             ),
@@ -45,7 +27,7 @@ class LoginView extends StatelessWidget {
               child: Text(Strings.email),
             ),
             CustomTextField(
-              controller: emailController,
+              controller: context.read<LoginViewModel>().emailController,
               validator: (value) {
                 return validateLogin(value);
               },
@@ -55,7 +37,7 @@ class LoginView extends StatelessWidget {
               child: Text(Strings.password),
             ),
             CustomTextField(
-              controller: passwordController,
+              controller: context.read<LoginViewModel>().passwordController,
               validator: (value) {
                 return validateLogin(value);
               },
@@ -66,9 +48,12 @@ class LoginView extends StatelessWidget {
             Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      if (loginKey.currentState!.validate()) {
-                        context.read<LoginProvider>().loginApiRequest(
-                            emailController.text, passwordController.text);
+                      if (context
+                          .read<LoginViewModel>()
+                          .loginKey
+                          .currentState!
+                          .validate()) {
+                        context.read<LoginViewModel>().loginApiRequest();
                       }
                     },
                     child: Text(

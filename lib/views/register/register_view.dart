@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
+import 'package:whatsapp/base/widgets/logo.dart';
 import 'package:whatsapp/views/register/provider/register_provider.dart';
-import '../../base/constants/assets.dart';
 
 class RegisterView extends StatelessWidget {
   final TextEditingController fullNameController = TextEditingController();
@@ -28,17 +28,7 @@ class RegisterView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //Logo
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.all(24.0),
-                child: Image(
-                  image: AssetImage(Assets.logo),
-                  width: 100,
-                  height: 100,
-                ),
-              ),
-            ),
+            const Logo(),
             const SizedBox(
               height: 30,
             ),
@@ -56,7 +46,6 @@ class RegisterView extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Text(Strings.email),
             ),
-
             CustomTextField(
               controller: emailController,
               validator: (value) {
