@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
-import 'package:whatsapp/base/widgets/custom_textfield.dart';
-import 'package:whatsapp/base/widgets/logo.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_labellarge_black.dart';
+import 'package:whatsapp/base/ui_toolkits/widgets/custom_textfield.dart';
+import 'package:whatsapp/base/ui_toolkits/widgets/logo.dart';
 import 'package:whatsapp/views/register/viewmodel/register_viewmodel.dart';
 
 class RegisterView extends StatelessWidget {
@@ -73,9 +74,8 @@ class RegisterView extends StatelessWidget {
                   onTap: () {
                     Navigator.pushReplacementNamed(context, 'login');
                   },
-                  child: Text(
-                    Strings.login,
-                    style: Theme.of(context).textTheme.labelLarge,
+                  child: const TextLabellargeBlack(
+                    text: Strings.login,
                   ),
                 )
               ],

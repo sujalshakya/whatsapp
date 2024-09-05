@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/base/ui_toolkits/text_labellarge.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_labellarge.dart';
 
 class MessageWidget extends StatelessWidget {
   final String firstName;

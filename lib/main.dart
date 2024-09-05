@@ -10,7 +10,7 @@ import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
 import 'package:whatsapp/views/login/login_view.dart';
 import 'package:whatsapp/views/register/viewmodel/register_viewmodel.dart';
-import 'package:whatsapp/views/splash/provider/splash_provider.dart';
+import 'package:whatsapp/views/splash/provider/splash_viewmodel.dart';
 import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
 import 'package:whatsapp/views/register/register_view.dart';

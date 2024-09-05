@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/base/widgets/logo.dart';
+import 'package:whatsapp/base/ui_toolkits/widgets/logo.dart';
 import 'package:whatsapp/views/splash/provider/splash_viewmodel.dart';
 
 class SplashView extends StatelessWidget {

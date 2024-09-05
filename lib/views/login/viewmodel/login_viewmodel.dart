@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/route.dart';
+import 'package:whatsapp/views/login/repository/login_repository.dart';
 import 'package:whatsapp/views/login/service/login_service.dart';
 
 class LoginViewModel extends ChangeNotifier {
@@ -16,7 +17,7 @@ class LoginViewModel extends ChangeNotifier {
 
   void loginApiRequest() async {
     if (loginKey.currentState!.validate()) {
-      final bool login = await AuthService.loginApiRequest(
+      final bool login = await LoginRepository.login(
           emailController.text, passwordController.text);
 
       if (login) {
