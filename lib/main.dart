@@ -9,7 +9,7 @@ import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
 import 'package:whatsapp/views/login/login_view.dart';
-import 'package:whatsapp/views/register/provider/register_provider.dart';
+import 'package:whatsapp/views/register/provider/register_viewmodel.dart';
 import 'package:whatsapp/views/splash/provider/splash_provider.dart';
 import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
@@ -27,7 +27,7 @@ void main() async {
     ChangeNotifierProvider(create: (context) => UserProvider()),
     ChangeNotifierProvider(create: (context) => SplashProvider()),
     ChangeNotifierProvider(create: (context) => LoginViewModel()),
-    ChangeNotifierProvider(create: (context) => RegisterProvider()),
+    ChangeNotifierProvider(create: (context) => RegisterViewModel()),
   ], child: const MyApp()));
 }
 
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         routes: {
           'home': (context) => const HomeView(),
           'login': (context) => const LoginView(),
-          'register': (context) => RegisterView(),
+          'register': (context) => const RegisterView(),
           'message': (context) => MessageDetailView(),
           'contact': (context) => const ContactView(),
           'splash': (context) => const SplashView()

@@ -4,26 +4,16 @@ import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
 import 'package:whatsapp/base/widgets/logo.dart';
-import 'package:whatsapp/views/register/provider/register_provider.dart';
+import 'package:whatsapp/views/register/provider/register_viewmodel.dart';
 
 class RegisterView extends StatelessWidget {
-  final TextEditingController fullNameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final registerKey = GlobalKey<FormState>();
-  RegisterView({super.key});
-
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    fullNameController.dispose();
-  }
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
-        key: registerKey,
+        key: context.read<RegisterViewModel>().registerKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +27,7 @@ class RegisterView extends StatelessWidget {
               child: Text(Strings.name),
             ),
             CustomTextField(
-              controller: fullNameController,
+              controller: context.read<RegisterViewModel>().fullNameController,
               validator: (value) {
                 return validateLogin(value);
               },
@@ -47,7 +37,7 @@ class RegisterView extends StatelessWidget {
               child: Text(Strings.email),
             ),
             CustomTextField(
-              controller: emailController,
+              controller: context.read<RegisterViewModel>().emailController,
               validator: (value) {
                 return validateEmail(value);
               },
@@ -57,7 +47,7 @@ class RegisterView extends StatelessWidget {
               child: Text(Strings.password),
             ),
             CustomTextField(
-              controller: passwordController,
+              controller: context.read<RegisterViewModel>().passwordController,
               validator: (value) {
                 return validatePassword(value);
               },
@@ -68,12 +58,12 @@ class RegisterView extends StatelessWidget {
             Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      if (registerKey.currentState!.validate()) {
-                        context.read<RegisterProvider>().registerApiRequest(
-                              emailController.text,
-                              passwordController.text,
-                              fullNameController.text,
-                            );
+                      if (context
+                          .read<RegisterViewModel>()
+                          .registerKey
+                          .currentState!
+                          .validate()) {
+                        context.read<RegisterViewModel>().registerApiRequest();
                       }
                     },
                     child: Text(Strings.register,
