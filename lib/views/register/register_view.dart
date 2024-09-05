@@ -11,7 +11,6 @@ class RegisterView extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final registerKey = GlobalKey<FormState>();
-
   RegisterView({super.key});
 
   void dispose() {
@@ -82,7 +81,6 @@ class RegisterView extends StatelessWidget {
                     onPressed: () {
                       if (registerKey.currentState!.validate()) {
                         context.read<RegisterProvider>().registerApiRequest(
-                              context,
                               emailController.text,
                               passwordController.text,
                               fullNameController.text,

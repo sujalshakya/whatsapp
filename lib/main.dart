@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
+import 'package:whatsapp/base/route.dart';
 import 'package:whatsapp/views/login/provider/login_provider.dart';
 import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
@@ -37,6 +38,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return MaterialApp(
+        onGenerateRoute: routes,
+        navigatorKey: navigatorKey,
         theme: themeProvider.getTheme,
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,

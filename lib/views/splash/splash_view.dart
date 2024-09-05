@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/constants/assets.dart';
@@ -8,8 +9,12 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-        (_) => context.read<SplashProvider>().startApp(context));
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => context.read<SplashProvider>().startApp());
+    Timer(
+        const Duration(seconds: 1),
+        () => Navigator.pushReplacementNamed(
+            context, context.read<SplashProvider>().navigate));
 
     return const Center(
       child: Padding(

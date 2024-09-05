@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/models/user.dart';
-import 'package:whatsapp/base/service/fetch_service.dart';
+import 'package:whatsapp/base/repository/fetch_repository.dart';
 
 class UserProvider extends ChangeNotifier {
   late UserData users = UserData(data: []);
@@ -9,18 +9,13 @@ class UserProvider extends ChangeNotifier {
   void fetchUsers() async {
     if (fetch == true) {
       try {
-        final fetchedUsers = await FetchService.fetchUsers();
+        final fetchedUsers = await FetchRepository.fetchUsersToRepository();
         users = fetchedUsers;
         fetch = false;
+        notifyListeners();
       } catch (error) {
         debugPrint('Error fetching data.');
       }
-      notifyListeners();
     }
-  }
-
-  @override
-  void notifyListeners() {
-    super.notifyListeners();
   }
 }

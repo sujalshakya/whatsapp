@@ -67,7 +67,7 @@ class LoginView extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if (loginKey.currentState!.validate()) {
-                        context.read<LoginProvider>().loginApiRequest(context,
+                        context.read<LoginProvider>().loginApiRequest(
                             emailController.text, passwordController.text);
                       }
                     },
