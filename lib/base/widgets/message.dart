@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/base/ui_toolkits/text_labellarge.dart';
 
 class MessageWidget extends StatelessWidget {
   final String firstName;
@@ -34,17 +35,9 @@ class MessageWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        firstName,
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface),
-                      ),
+                      LabelLarge(text: firstName),
                       const Text(" "),
-                      Text(
-                        lastName,
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface),
-                      ),
+                      LabelLarge(text: lastName),
                     ],
                   ),
                   const Text("Message")
