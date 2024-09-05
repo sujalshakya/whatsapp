@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/route.dart';
 import 'package:whatsapp/views/login/repository/login_repository.dart';
-import 'package:whatsapp/views/login/service/login_service.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final TextEditingController emailController = TextEditingController();

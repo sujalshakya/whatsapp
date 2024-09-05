@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/route.dart';
-import 'package:whatsapp/views/register/service/register_service.dart';
+import 'package:whatsapp/views/register/repository/register_repository.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   final TextEditingController fullNameController = TextEditingController();
@@ -18,7 +18,7 @@ class RegisterViewModel extends ChangeNotifier {
 
   void registerApiRequest() async {
     if (registerKey.currentState!.validate()) {
-      final bool register = await AuthService.registerApiRequest(
+      final bool register = await RegisterRepository.register(
           emailController.text,
           passwordController.text,
           fullNameController.text);
