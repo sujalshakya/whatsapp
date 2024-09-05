@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MessageProvider extends ChangeNotifier {
+class MessageViewModel extends ChangeNotifier {
   List<String> messages = [
     "Hello how are you?",
     "I am fine. What about you?",

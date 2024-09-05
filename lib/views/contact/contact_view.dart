@@ -9,8 +9,8 @@ class ContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => context.read<UserViewModel>().fetchUsers());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onSecondary,
@@ -211,7 +211,7 @@ class ContactView extends StatelessWidget {
                 ),
               ],
             ),
-            ChatsWidget(users: context.read<UserProvider>().users)
+            ChatsWidget(users: context.read<UserViewModel>().users)
           ],
         ),
       ),

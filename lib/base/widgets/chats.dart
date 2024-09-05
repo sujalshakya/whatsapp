@@ -14,8 +14,8 @@ class ChatsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => context.read<UserViewModel>().fetchUsers());
     return SizedBox(
       height: 500,
       child: ListView.builder(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
+import 'package:whatsapp/views/message_detail/viewmodel/message_provider.dart';
 
 class SendMessage extends StatelessWidget {
   const SendMessage({
@@ -32,7 +32,7 @@ class SendMessage extends StatelessWidget {
                       onTap: () {
                         if (messageController.text.isNotEmpty) {
                           context
-                              .read<MessageProvider>()
+                              .read<MessageViewModel>()
                               .addMessage(messageController.text);
                           messageController.clear();
                         }

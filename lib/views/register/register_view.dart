@@ -4,7 +4,7 @@ import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
 import 'package:whatsapp/base/widgets/custom_textfield.dart';
 import 'package:whatsapp/base/widgets/logo.dart';
-import 'package:whatsapp/views/register/provider/register_viewmodel.dart';
+import 'package:whatsapp/views/register/viewmodel/register_viewmodel.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});

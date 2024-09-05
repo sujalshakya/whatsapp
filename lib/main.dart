@@ -4,12 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/route.dart';
 import 'package:whatsapp/views/login/viewmodel/login_viewmodel.dart';
-import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
+import 'package:whatsapp/views/message_detail/viewmodel/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/contact/contact_view.dart';
 import 'package:whatsapp/views/home/home_view.dart';
 import 'package:whatsapp/views/login/login_view.dart';
-import 'package:whatsapp/views/register/provider/register_viewmodel.dart';
+import 'package:whatsapp/views/register/viewmodel/register_viewmodel.dart';
 import 'package:whatsapp/views/splash/provider/splash_provider.dart';
 import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
@@ -23,9 +23,9 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
         create: (context) => ThemeProvider(isDark: themeBool)),
-    ChangeNotifierProvider(create: (context) => MessageProvider()),
-    ChangeNotifierProvider(create: (context) => UserProvider()),
-    ChangeNotifierProvider(create: (context) => SplashProvider()),
+    ChangeNotifierProvider(create: (context) => MessageViewModel()),
+    ChangeNotifierProvider(create: (context) => UserViewModel()),
+    ChangeNotifierProvider(create: (context) => SplashViewModel()),
     ChangeNotifierProvider(create: (context) => LoginViewModel()),
     ChangeNotifierProvider(create: (context) => RegisterViewModel()),
   ], child: const MyApp()));

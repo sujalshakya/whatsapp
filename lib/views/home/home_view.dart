@@ -65,7 +65,7 @@ class HomeView extends StatelessWidget {
         body: TabBarView(children: [
           Column(
             children: [
-              ChatsWidget(users: context.watch<UserProvider>().users),
+              ChatsWidget(users: context.watch<UserViewModel>().users),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(

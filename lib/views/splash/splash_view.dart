@@ -9,12 +9,12 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => context.read<SplashProvider>().startApp());
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => context.read<SplashViewModel>().startApp());
     Timer(
         const Duration(seconds: 1),
         () => Navigator.pushReplacementNamed(
-            context, context.read<SplashProvider>().navigate));
+            context, context.read<SplashViewModel>().navigate));
 
     return const Logo();
   }

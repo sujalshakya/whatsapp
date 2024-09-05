@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/views/message_detail/provider/message_provider.dart';
+import 'package:whatsapp/views/message_detail/viewmodel/message_provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 import 'package:whatsapp/views/message_detail/widgets/send_message.dart';
@@ -156,7 +156,7 @@ class MessageDetailView extends StatelessWidget {
                 ),
               ),
               MessagesWidget(
-                  messages: context.watch<MessageProvider>().messages),
+                  messages: context.watch<MessageViewModel>().messages),
               SendMessage(messageController: messageController)
             ],
           ),
