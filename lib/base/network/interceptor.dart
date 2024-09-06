@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/service/secure_storage.dart';
-import 'package:whatsapp/main.dart';
+import 'package:whatsapp/base/service/snackbar_service.dart';
 
 class DioInterceptor extends Interceptor {
   Dio dio = Dio();
@@ -35,11 +35,11 @@ class DioInterceptor extends Interceptor {
   Future<void> onError(err, handler) async {
     debugPrint(err.toString());
     if (err.response?.statusCode == 400) {
-      debugPrint("Client Error");
+      SnackBarService.showSnackBar(content: "Client Error");
     }
 
     if (err.response?.statusCode == 500) {
-      debugPrint("Internal Server Error");
+      SnackBarService.showSnackBar(content: "Internal Server Error");
     }
   }
 }

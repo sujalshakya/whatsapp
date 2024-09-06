@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/route.dart';
-import 'package:whatsapp/main.dart';
+import 'package:whatsapp/base/service/snackbar_service.dart';
 import 'package:whatsapp/views/login/repository/login_repository.dart';
 
 class LoginViewModel extends ChangeNotifier {
@@ -20,14 +20,16 @@ class LoginViewModel extends ChangeNotifier {
       final bool login = await LoginRepository.login(
           emailController.text, passwordController.text);
 
-      if (login) {
-        navigatorKey.currentState!.pushNamed('home');
+      if (login == true) {
+        emailController.clear();
+        passwordController.clear();
+
+        navigatorKey.currentState!.restorablePushReplacementNamed('home');
+        SnackBarService.showSnackBar(
+          content: "Login Successful",
+        );
         notifyListeners();
       } else {
-        if (scaffoldKey.currentState != null) {
-          rootScaffoldMessengerKey.currentState
-              ?.showSnackBar(const SnackBar(content: Text("Client Error")));
-        }
         debugPrint("login failed");
 
         notifyListeners();

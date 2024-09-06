@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/route.dart';
+import 'package:whatsapp/base/service/snackbar_service.dart';
 import 'package:whatsapp/views/register/repository/register_repository.dart';
 
 class RegisterViewModel extends ChangeNotifier {
@@ -24,7 +25,13 @@ class RegisterViewModel extends ChangeNotifier {
           fullNameController.text);
 
       if (register) {
+        emailController.clear();
+        passwordController.clear();
+        fullNameController.clear();
         navigatorKey.currentState!.pushNamed('login');
+        SnackBarService.showSnackBar(
+          content: "Registration Successful",
+        );
       } else {
         debugPrint("registration failed");
       }

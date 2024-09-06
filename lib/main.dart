@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/route.dart';
+import 'package:whatsapp/base/service/snackbar_service.dart';
 import 'package:whatsapp/views/login/viewmodel/login_viewmodel.dart';
 import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
@@ -15,9 +16,6 @@ import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
 import 'package:whatsapp/views/register/register_view.dart';
 
-GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
-    GlobalKey<ScaffoldMessengerState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -44,7 +42,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         theme: themeProvider.getTheme,
         title: 'Flutter Demo',
-        scaffoldMessengerKey: rootScaffoldMessengerKey,
+        scaffoldMessengerKey: SnackBarService.scaffoldKey,
         debugShowCheckedModeBanner: false,
         routes: {
           'home': (context) => const HomeView(),
