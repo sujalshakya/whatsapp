@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labellarge.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_labelsmall.dart';
 
 class MessageWidget extends StatelessWidget {
   final String firstName;
@@ -58,13 +59,9 @@ class MessageWidget extends StatelessWidget {
                     width: 25,
                     height: 25,
                     // Static number of messages.
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 4, 0, 0),
-                      child: Text(
-                        "3",
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface),
-                      ),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 4, 0, 0),
+                      child: TextLabelSmall(text: "3"),
                     ),
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_labellarge.dart';
 import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
 import 'package:whatsapp/views/message_detail/widgets/date_container.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
@@ -54,14 +55,9 @@ class MessageDetailBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
                 color: Theme.of(context).colorScheme.surface,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "1 UNREAD MESSAGE",
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                ),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: LabelLarge(text: "1 UNREAD MESSAGE"),
               ),
             ),
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_titlelarge.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_titlemedium.dart';
 import 'package:whatsapp/views/message_detail/widgets/message_detail_body.dart';
 
 class MessageDetailView extends StatelessWidget {
@@ -25,21 +27,15 @@ class MessageDetailView extends StatelessWidget {
               ),
             ],
           ),
-          title: Column(
+          title: const Column(
             children: [
               Row(
                 children: [
-                  Text("Name",
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.surface)),
+                  TextTitleLarge(text: "Name"),
                 ],
               ),
               Row(
-                children: [
-                  Text("online",
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.surface)),
-                ],
+                children: [TextTitleMedium(text: "Online")],
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
+import 'package:whatsapp/base/ui_toolkits/text/text_bodymedium.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labellarge_black.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/custom_textfield.dart';
 import 'package:provider/provider.dart';
@@ -51,10 +52,7 @@ class LoginView extends StatelessWidget {
                     onPressed: () {
                       context.read<LoginViewModel>().loginApiRequest();
                     },
-                    child: Text(
-                      Strings.login,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ))),
+                    child: const TextBodyMedium(text: Strings.login))),
             const SizedBox(
               height: 20,
             ),
