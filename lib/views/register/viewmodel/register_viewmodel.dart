@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/base/route.dart';
+import 'package:whatsapp/base/service/route.dart';
 import 'package:whatsapp/base/service/snackbar_service.dart';
 import 'package:whatsapp/views/register/repository/register_repository.dart';
 

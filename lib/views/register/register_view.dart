@@ -57,7 +57,7 @@ class RegisterView extends StatelessWidget {
               height: 20,
             ),
 
-            ///Register Button
+            //Register Button
             Center(
                 child: ElevatedButton(
                     onPressed: () {
@@ -69,7 +69,7 @@ class RegisterView extends StatelessWidget {
               height: 20,
             ),
 
-            /// Line at the bottom which navigates to login page when tapped.
+            // Line at the bottom which navigates to login page when tapped.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

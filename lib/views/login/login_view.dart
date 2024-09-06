@@ -59,7 +59,7 @@ class LoginView extends StatelessWidget {
               height: 20,
             ),
 
-            /// Line at the bottom which navigates to register page when tapped.
+            // Line at the bottom which navigates to register page when tapped.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

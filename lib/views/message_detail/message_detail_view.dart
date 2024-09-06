@@ -64,7 +64,7 @@ class MessageDetailView extends StatelessWidget {
           ],
         ),
 
-        /// Body in a different file
+        // Body in a different file
         body: const MessageDetailBody());
   }
 }

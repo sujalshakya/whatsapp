@@ -16,7 +16,7 @@ class MessageDetailBody extends StatelessWidget {
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.onError),
       child: Column(
         children: [
-          /// Blue colored container with text.
+          // Blue colored container with text.
           const DateContainer(text: 'SEPTEMBER 05, 2024'),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -76,10 +76,10 @@ class MessageDetailBody extends StatelessWidget {
             text: 'TODAY',
           ),
 
-          /// Shows messages alternatingly in different colors.
+          // Shows messages alternatingly in different colors.
           MessagesWidget(messages: context.watch<MessageViewModel>().messages),
 
-          /// The row of textfield with button to add text to messages list and floating action button.
+          // The row of textfield with button to add text to messages list and floating action button.
 
           const SendMessage()
         ],

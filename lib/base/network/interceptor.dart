@@ -6,7 +6,7 @@ import 'package:whatsapp/base/service/snackbar_service.dart';
 class DioInterceptor extends Interceptor {
   Dio dio = Dio();
 
-  /// Add headers including token when token is not null.
+  // Add headers including token when token is not null.
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {

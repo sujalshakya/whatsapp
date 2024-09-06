@@ -55,7 +55,7 @@ class ContactBody extends StatelessWidget {
             ],
           ),
 
-          /// A list of list tiles with user data.
+          // A list of list tiles with user data.
           ChatsWidget(users: context.read<UserViewModel>().users)
         ],
       ),
