@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/base/theme/theme.dart';
 
+// SharedPreferences is used for Startup theme.
+
 class ThemeProvider extends ChangeNotifier {
   late ThemeData selectedTheme;
   late SharedPreferences prefs;

@@ -57,7 +57,7 @@ class MessageWidget extends StatelessWidget {
                         color: Theme.of(context).colorScheme.onSecondary),
                     width: 25,
                     height: 25,
-                    // Static number of messages unread.
+                    // Static number of messages.
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 4, 0, 0),
                       child: Text(

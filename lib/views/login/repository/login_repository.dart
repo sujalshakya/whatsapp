@@ -12,6 +12,7 @@ abstract class LoginRepository {
     final response = await AuthService.loginApiRequest(data);
     try {
       var data = jsonDecode(response.toString());
+      // Store token in secure storage.
       await SecureStorage().setToken('token', data['token']);
 
       return true;

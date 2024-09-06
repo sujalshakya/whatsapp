@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/route.dart';
+import 'package:whatsapp/main.dart';
 import 'package:whatsapp/views/login/repository/login_repository.dart';
 
 class LoginViewModel extends ChangeNotifier {
@@ -23,7 +24,12 @@ class LoginViewModel extends ChangeNotifier {
         navigatorKey.currentState!.pushNamed('home');
         notifyListeners();
       } else {
+        if (scaffoldKey.currentState != null) {
+          rootScaffoldMessengerKey.currentState
+              ?.showSnackBar(const SnackBar(content: Text("Client Error")));
+        }
         debugPrint("login failed");
+
         notifyListeners();
       }
 

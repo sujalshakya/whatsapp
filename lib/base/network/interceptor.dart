@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/service/secure_storage.dart';
+import 'package:whatsapp/main.dart';
 
 class DioInterceptor extends Interceptor {
   Dio dio = Dio();
+
+  /// Add headers including token when token is not null.
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
@@ -20,12 +23,14 @@ class DioInterceptor extends Interceptor {
     return super.onRequest(options, handler);
   }
 
+// Print status code after every api call.
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     debugPrint(response.statusCode.toString());
     super.onResponse(response, handler);
   }
 
+// Print type of error in case of errors.
   @override
   Future<void> onError(err, handler) async {
     debugPrint(err.toString());

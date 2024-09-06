@@ -15,10 +15,12 @@ import 'package:whatsapp/views/splash/splash_view.dart';
 import 'package:whatsapp/views/message_detail/message_detail_view.dart';
 import 'package:whatsapp/views/register/register_view.dart';
 
+GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-
   bool themeBool = prefs.getBool("isDark") ?? false;
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
@@ -42,6 +44,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         theme: themeProvider.getTheme,
         title: 'Flutter Demo',
+        scaffoldMessengerKey: rootScaffoldMessengerKey,
         debugShowCheckedModeBanner: false,
         routes: {
           'home': (context) => const HomeView(),
