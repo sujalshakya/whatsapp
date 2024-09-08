@@ -7,18 +7,15 @@ class AuthFooter extends StatelessWidget {
   /// Requires [tap] which is the text to be shown which is tappable to perform [onTap].
   /// Requires [message] which is the text to be shown before [tap].
   /// Requires [onTap] which is the task called when [tap] is tapped.
-  const AuthFooter({
-    super.key,
-    required this.tap,
-    required this.message,
-    this.onTap,
-    required Future<Object?> ontap,
-  });
+  const AuthFooter(
+      {super.key,
+      required this.tap,
+      required this.message,
+      required this.ontap});
 
   final String tap;
   final String message;
-  final void Function()? onTap;
-
+  final void Function()? ontap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,9 +23,7 @@ class AuthFooter extends StatelessWidget {
       children: [
         Text(message),
         GestureDetector(
-          onTap: () {
-            onTap;
-          },
+          onTap: () {},
           child: TextLabellargeBlack(
             text: tap,
           ),

@@ -64,7 +64,9 @@ class LoginView extends StatelessWidget {
             /// Line at the bottom which helps navigate to register page.
             AuthFooter(
                 message: "Don't have an account?  ",
-                ontap: Navigator.pushReplacementNamed(context, 'register'),
+                ontap: () {
+                  Navigator.pushReplacementNamed(context, 'register');
+                },
                 tap: Strings.register),
           ]),
     ));

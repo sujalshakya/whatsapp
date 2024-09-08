@@ -78,7 +78,9 @@ class RegisterView extends StatelessWidget {
 
             AuthFooter(
                 message: 'Already have an account?  ',
-                ontap: Navigator.pushReplacementNamed(context, 'login'),
+                ontap: () {
+                  Navigator.pushReplacementNamed(context, 'login');
+                },
                 tap: Strings.login),
           ],
         ),

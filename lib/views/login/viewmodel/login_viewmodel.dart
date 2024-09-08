@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/service/route_service.dart';
 import 'package:whatsapp/base/service/snackbar_service.dart';
-import 'package:whatsapp/views/login/repository/login_repository.dart';
+import 'package:whatsapp/views/login/repository/login_repository_implementation.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final loginKey = GlobalKey<FormState>();
+  final loginRepo = LoginRepositoryImplementation();
 
   @override
   void dispose() {
@@ -17,8 +18,8 @@ class LoginViewModel extends ChangeNotifier {
 
   void loginApiRequest() async {
     if (loginKey.currentState!.validate()) {
-      final bool login = await LoginRepository.login(
-          emailController.text, passwordController.text);
+      final bool login =
+          await loginRepo.login(emailController.text, passwordController.text);
 
       /// Manually clear controllers before navigating.
       if (login == true) {

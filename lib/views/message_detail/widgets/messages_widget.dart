@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class MessagesWidget extends StatelessWidget {
   /// Requires [messages] which is a list of texts added by the user.
   /// The odd indexed message in [messages] which signifies message
-  /// sent to user is [Theme.of(context).colorScheme.surface] in color.
+  /// sent to user is [ColorScheme.surface] in color.
   /// The even indexed message in [messages] which signifies message
-  /// sent by user is [Theme.of(context).colorScheme.secondary] in color.
+  /// sent by user is [ColorScheme.secondary] in color.
   const MessagesWidget({
     super.key,
     required this.messages,
