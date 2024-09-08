@@ -73,10 +73,7 @@ class MessageDetailBody extends StatelessWidget {
 
           MessagesWidget(messages: context.watch<MessageViewModel>().messages),
 
-          /// The row of widgets with textfield, button and floating action button.
-          /// The button adds controller text to messages list
-
-          const SendMessage()
+          const SendMessage(),
         ],
       ),
     );

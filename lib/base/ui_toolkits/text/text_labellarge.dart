@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Fontsize is 14.
-
 class LabelLarge extends StatelessWidget {
+  /// Fontsize is 14.
   const LabelLarge({
     super.key,
     required this.text,

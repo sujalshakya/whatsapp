@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
 
-/// Row of widgets for typing message and sending it.
-
 class SendMessage extends StatelessWidget {
+  /// The row of widgets with textfield, button and floating action button.
+  /// The button adds controller text to messages list
   const SendMessage({
     super.key,
   });

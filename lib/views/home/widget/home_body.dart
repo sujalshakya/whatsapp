@@ -13,7 +13,6 @@ class HomeBody extends StatelessWidget {
     return TabBarView(children: [
       Column(
         children: [
-          /// List of previous chats that shows user data.
           ChatsWidget(users: context.watch<UserViewModel>().users),
           Padding(
             padding: const EdgeInsets.all(16.0),

@@ -23,7 +23,7 @@ class DioInterceptor extends Interceptor {
     return super.onRequest(options, handler);
   }
 
-  // Print status code after every api response.
+  /// Print status code after every api response.
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     debugPrint(response.statusCode.toString());

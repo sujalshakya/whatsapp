@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labellarge.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labelsmall.dart';
 
-/// A single users chat.
-
 class MessageWidget extends StatelessWidget {
   final String firstName;
   final String avatar;
   final String lastName;
+
+  /// A single users chat box.
 
   /// Requires [firstName], [avatar] and [lastName].
   const MessageWidget(

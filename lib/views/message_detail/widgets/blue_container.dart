@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-// Blue colored Container that takes [text].
 class BlueContainer extends StatelessWidget {
   final String text;
+
+  /// Blue colored Container that takes [text].
 
   const BlueContainer({super.key, required this.text});
 

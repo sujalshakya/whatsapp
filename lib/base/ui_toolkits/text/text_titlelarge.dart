@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-/// Fontsize is 22.
-
 class TextTitleLarge extends StatelessWidget {
   final String text;
+
+  /// Fontsize is 22.
+
   const TextTitleLarge({
     super.key,
     required this.text,

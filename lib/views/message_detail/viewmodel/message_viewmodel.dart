@@ -16,7 +16,7 @@ class MessageViewModel extends ChangeNotifier {
   ];
 
   /// Method to add to list if controller is not empty
-  /// And clear the controller after adding.
+  /// and clear the controller after adding.
   void addMessage() {
     if (messageController.text.isNotEmpty) {
       messages.add(messageController.text);

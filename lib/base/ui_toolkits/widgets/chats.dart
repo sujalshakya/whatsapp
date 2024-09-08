@@ -4,10 +4,10 @@ import 'package:whatsapp/base/models/user.dart';
 import 'package:whatsapp/base/provider/user_viewmodel.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/message.dart';
 
-/// This is used to build list of user chats.
-/// Requires [users] which is list of user data.
-
 class ChatsWidget extends StatelessWidget {
+  /// This is used to build list of user chats.
+  /// Requires [users] which is list of user data.
+
   const ChatsWidget({
     super.key,
     required this.users,

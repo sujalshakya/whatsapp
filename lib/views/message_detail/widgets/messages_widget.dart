@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Shows messages alternatingly in different colored containers.
-
 class MessagesWidget extends StatelessWidget {
+  /// Shows messages alternatingly in different colored containers.
+
   const MessagesWidget({
     super.key,
     required this.messages,
