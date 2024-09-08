@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LabelLarge extends StatelessWidget {
-  /// Fontsize is 14.
+  /// Creates a [Text] widget that has fontsize of 14.
+  /// The color of font is [ColorScheme.onSurface].
+  /// Requires [text] which is shown when [LabelLarge] is called.
+
   const LabelLarge({
     super.key,
     required this.text,

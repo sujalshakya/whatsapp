@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+///Widget that shows a listtile that shows different texts and icons.
+
 class ContactGroup extends StatelessWidget {
   final String text;
   final IconData icon;
-//Widget that shows a listtile that shows different texts and icons.
+
+  /// Requires [icon] which is the image at the start of row.
+  /// Requires [text] which is the text after the icon.
 
   const ContactGroup({
     required this.text,

@@ -6,6 +6,7 @@ import 'package:whatsapp/base/ui_toolkits/text/text_labellarge_black.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/custom_textfield.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/logo.dart';
 import 'package:whatsapp/views/register/viewmodel/register_viewmodel.dart';
+import 'package:whatsapp/base/ui_toolkits/widgets/auth_footer.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -13,6 +14,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /// Register Form
       body: Form(
         key: context.read<RegisterViewModel>().registerKey,
         child: Column(
@@ -27,30 +29,34 @@ class RegisterView extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Text(Strings.name),
             ),
+            // Name controller
             CustomTextField(
               controller: context.read<RegisterViewModel>().fullNameController,
               validator: (value) {
-                return validateLogin(value);
+                return Validators.validateLogin(value);
               },
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(Strings.email),
             ),
+
+            // Email controller
             CustomTextField(
               controller: context.read<RegisterViewModel>().emailController,
               validator: (value) {
-                return validateEmail(value);
+                return Validators.validateEmail(value);
               },
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(Strings.password),
             ),
+            // Password controller
             CustomTextField(
               controller: context.read<RegisterViewModel>().passwordController,
               validator: (value) {
-                return validatePassword(value);
+                return Validators.validatePassword(value);
               },
             ),
             const SizedBox(
@@ -68,21 +74,12 @@ class RegisterView extends StatelessWidget {
               height: 20,
             ),
 
-            /// Line at the bottom which navigates to login page when tapped.
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Already have an account? "),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, 'login');
-                  },
-                  child: const TextLabellargeBlack(
-                    text: Strings.login,
-                  ),
-                )
-              ],
-            ),
+            /// Line at the bottom which helps navigate to login page.
+
+            AuthFooter(
+                message: 'Already have an account?  ',
+                ontap: Navigator.pushReplacementNamed(context, 'login'),
+                tap: Strings.login),
           ],
         ),
       ),

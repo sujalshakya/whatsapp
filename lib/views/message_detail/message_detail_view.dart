@@ -48,6 +48,8 @@ class MessageDetailView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Icon(Icons.phone,
                     color: Theme.of(context).colorScheme.surface)),
+
+            /// Toggle theme of app.
             GestureDetector(
                 onTap: () {
                   Provider.of<ThemeProvider>(context, listen: false)
@@ -59,8 +61,6 @@ class MessageDetailView extends StatelessWidget {
                 ))
           ],
         ),
-
-        /// Body in a different file
         body: const MessageDetailBody());
   }
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/base/provider/user_viewmodel.dart';
+import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/chats.dart';
 
+/// Body part of [HomeView].
 class HomeBody extends StatelessWidget {
+  /// Contains the screens for all the tabbars.
+  /// Message page is created where list of messages sent to user is shown [ChatsWidget] .
+  /// Others pages remain to be built.
   const HomeBody({
     super.key,
   });
@@ -13,7 +17,7 @@ class HomeBody extends StatelessWidget {
     return TabBarView(children: [
       Column(
         children: [
-          ChatsWidget(users: context.watch<UserViewModel>().users),
+          ChatsWidget(users: context.watch<UserProvider>().users),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(

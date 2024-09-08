@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/base/provider/user_viewmodel.dart';
+import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/chats.dart';
 import 'package:whatsapp/views/contact/widget/contact_group.dart';
 
@@ -56,7 +56,7 @@ class ContactBody extends StatelessWidget {
           ),
 
           /// A list of list tiles with user data.
-          ChatsWidget(users: context.read<UserViewModel>().users)
+          ChatsWidget(users: context.read<UserProvider>().users)
         ],
       ),
     );

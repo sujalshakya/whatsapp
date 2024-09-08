@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/base/models/user.dart';
 import 'package:whatsapp/base/repository/fetch_repository.dart';
 
-class UserViewModel extends ChangeNotifier {
+class UserProvider extends ChangeNotifier {
   late UserData users = UserData(data: []);
   bool fetch = true;
 

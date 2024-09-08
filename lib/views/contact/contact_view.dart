@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
-import 'package:whatsapp/base/provider/user_viewmodel.dart';
+import 'package:whatsapp/base/provider/user_provider.dart';
 import 'package:whatsapp/views/contact/widget/contact_body.dart';
 
 class ContactView extends StatelessWidget {
@@ -9,8 +9,8 @@ class ContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-        (_) => context.read<UserViewModel>().fetchUsers());
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => context.read<UserProvider>().fetchUsers());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onSecondary,
@@ -45,6 +45,7 @@ class ContactView extends StatelessWidget {
               color: Theme.of(context).colorScheme.surface,
             ),
           ),
+          // Toggle theme of app.
           GestureDetector(
               onTap: () {
                 Provider.of<ThemeProvider>(context, listen: false)

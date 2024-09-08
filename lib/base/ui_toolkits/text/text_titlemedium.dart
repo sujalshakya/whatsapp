@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class TextTitleMedium extends StatelessWidget {
   final String text;
 
-  /// Fontsize is 16.
+  /// Creates a [Text] widget that has fontsize of 16.
+  /// The color of font is [ColorScheme.surface].
+  /// Requires [text] which is shown when [TextTitleMedium] is called.
 
   const TextTitleMedium({
     super.key,

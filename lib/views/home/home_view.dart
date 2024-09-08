@@ -13,6 +13,8 @@ class HomeView extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          /// 4 tabbars 1 icon and 3 text.
+
           bottom: TabBar(tabs: [
             Tab(
               icon: Icon(
@@ -49,6 +51,8 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             ),
+
+            /// Toggle theme of app.
             GestureDetector(
               onTap: () {
                 Provider.of<ThemeProvider>(context, listen: false)

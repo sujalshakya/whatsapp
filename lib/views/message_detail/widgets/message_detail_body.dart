@@ -7,6 +7,10 @@ import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 import 'package:whatsapp/views/message_detail/widgets/send_message.dart';
 
 class MessageDetailBody extends StatelessWidget {
+  /// The body of the MessageDetail View
+  /// Contains the containers data about the [messages].
+  /// Contains the list of messages i.e. [MessagesWidget].
+  /// Contains the widget that is used to send messages i.e. [SendMessage].
   const MessageDetailBody({
     super.key,
   });
@@ -17,6 +21,7 @@ class MessageDetailBody extends StatelessWidget {
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.onError),
       child: Column(
         children: [
+          /// Date
           const BlueContainer(text: 'SEPTEMBER 05, 2024'),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -71,8 +76,10 @@ class MessageDetailBody extends StatelessWidget {
             text: 'TODAY',
           ),
 
+          /// Display list of messages.
           MessagesWidget(messages: context.watch<MessageViewModel>().messages),
 
+          /// Add text to list.
           const SendMessage(),
         ],
       ),

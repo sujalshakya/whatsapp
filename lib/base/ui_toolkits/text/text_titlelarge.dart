@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class TextTitleLarge extends StatelessWidget {
-  final String text;
+  /// Creates a [Text] widget that has fontsize of 22.
+  /// The color of font is [ColorScheme.surface].
+  /// Requires [text] which is shown when [TextTitleLarge] is called.
 
-  /// Fontsize is 22.
+  final String text;
 
   const TextTitleLarge({
     super.key,

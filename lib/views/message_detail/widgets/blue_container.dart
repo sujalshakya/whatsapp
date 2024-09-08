@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class BlueContainer extends StatelessWidget {
   final String text;
 
-  /// Blue colored Container that takes [text].
-
+  /// Blue colored Container that requires [text].
+  /// Padding of 8 on all side of the [text].
+  /// Padding of 8 around the [BlueContainer].
   const BlueContainer({super.key, required this.text});
 
   @override

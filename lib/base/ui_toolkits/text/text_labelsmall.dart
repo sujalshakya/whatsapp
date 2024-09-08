@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class TextLabelSmall extends StatelessWidget {
   final String text;
 
-  /// Fontsize is 11.
+  /// Creates a [Text] widget that has fontsize of 11.
+  /// The color of font is [ColorScheme.onSurface].
+  /// Requires [text] which is shown when [TextLabelSmall] is called.
 
   const TextLabelSmall({
     super.key,
@@ -13,7 +15,7 @@ class TextLabelSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "3",
+      text,
       style: Theme.of(context)
           .textTheme
           .labelSmall

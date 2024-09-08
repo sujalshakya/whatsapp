@@ -9,6 +9,7 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Call [startApp] method after the page is built.
     WidgetsBinding.instance.addPostFrameCallback(
         (_) => context.read<SplashViewModel>().startApp());
     Timer(

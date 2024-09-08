@@ -4,7 +4,10 @@ import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
 
 class SendMessage extends StatelessWidget {
   /// The row of widgets with textfield, button and floating action button.
-  /// The button adds controller text to messages list
+  /// The textfield contains hint message and 3 icons:
+  /// [Icons.send] to call the [addMessage]method.
+  /// [Icons. attach_file] and [Icons.camera_alt] yet to be implemented.
+  /// The button adds controller text to messages list.
   const SendMessage({
     super.key,
   });
@@ -65,9 +68,7 @@ class SendMessage extends StatelessWidget {
           ),
         ),
         FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, 'contact');
-          },
+          onPressed: () {},
           backgroundColor: Theme.of(context).colorScheme.onSecondary,
           foregroundColor: Theme.of(context).colorScheme.surface,
           shape: const CircleBorder(),
