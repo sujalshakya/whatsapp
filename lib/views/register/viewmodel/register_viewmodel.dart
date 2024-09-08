@@ -24,6 +24,7 @@ class RegisterViewModel extends ChangeNotifier {
           passwordController.text,
           fullNameController.text);
 
+      /// Manually clear controllers before navigating.
       if (register) {
         emailController.clear();
         passwordController.clear();

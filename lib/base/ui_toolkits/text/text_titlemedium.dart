@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Fontsize is 16.
+
 class TextTitleMedium extends StatelessWidget {
   final String text;
   const TextTitleMedium({

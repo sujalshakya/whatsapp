@@ -20,6 +20,7 @@ class LoginViewModel extends ChangeNotifier {
       final bool login = await LoginRepository.login(
           emailController.text, passwordController.text);
 
+      /// Manually clear controllers before navigating.
       if (login == true) {
         emailController.clear();
         passwordController.clear();

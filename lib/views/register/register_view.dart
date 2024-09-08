@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/constants/strings.dart';
 import 'package:whatsapp/base/constants/validators.dart';
-import 'package:whatsapp/base/ui_toolkits/text/text_bodymedium.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labellarge_black.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/custom_textfield.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/logo.dart';
@@ -58,18 +57,18 @@ class RegisterView extends StatelessWidget {
               height: 20,
             ),
 
-            //Register Button
+            /// Register Button
             Center(
                 child: ElevatedButton(
                     onPressed: () {
                       context.read<RegisterViewModel>().registerApiRequest();
                     },
-                    child: const TextBodyMedium(text: Strings.register))),
+                    child: const TextLabellargeBlack(text: Strings.register))),
             const SizedBox(
               height: 20,
             ),
 
-            // Line at the bottom which navigates to login page when tapped.
+            /// Line at the bottom which navigates to login page when tapped.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

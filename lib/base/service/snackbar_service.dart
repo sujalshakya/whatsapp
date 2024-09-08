@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Show snackbar from anywhere without context.
+
 class SnackBarService {
   static final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 

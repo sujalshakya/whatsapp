@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Fontsize is 11.
+
 class TextLabelSmall extends StatelessWidget {
   final String text;
   const TextLabelSmall({

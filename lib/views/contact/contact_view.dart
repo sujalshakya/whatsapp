@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/provider/theme_provider.dart';
-import 'package:whatsapp/base/provider/user_provider.dart';
+import 'package:whatsapp/base/provider/user_viewmodel.dart';
 import 'package:whatsapp/views/contact/widget/contact_body.dart';
 
 class ContactView extends StatelessWidget {
@@ -56,7 +56,8 @@ class ContactView extends StatelessWidget {
               ))
         ],
       ),
-      // Body in different file.
+
+      /// Body in different file.
       body: const ContactBody(),
     );
   }

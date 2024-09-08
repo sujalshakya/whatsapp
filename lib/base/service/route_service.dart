@@ -6,6 +6,8 @@ import 'package:whatsapp/views/message_detail/message_detail_view.dart';
 import 'package:whatsapp/views/register/register_view.dart';
 import 'package:whatsapp/views/splash/splash_view.dart';
 
+/// Defines a list of routes of to use for navigation without context.
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Route<dynamic>? routes(RouteSettings settings) {

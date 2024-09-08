@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/constants/assets.dart';
 
+/// Logo of app.
+
 class Logo extends StatelessWidget {
   const Logo({
     super.key,

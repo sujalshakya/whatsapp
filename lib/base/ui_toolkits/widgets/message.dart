@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labellarge.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labelsmall.dart';
 
+/// A single users chat.
+
 class MessageWidget extends StatelessWidget {
   final String firstName;
   final String avatar;
   final String lastName;
 
+  /// Requires [firstName], [avatar] and [lastName].
   const MessageWidget(
       {super.key,
       required this.firstName,
@@ -58,6 +61,7 @@ class MessageWidget extends StatelessWidget {
                         color: Theme.of(context).colorScheme.onSecondary),
                     width: 25,
                     height: 25,
+
                     // Static number of messages.
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(10, 4, 0, 0),

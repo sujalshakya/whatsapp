@@ -23,7 +23,7 @@ class User {
   }
 }
 
-// Model to Add users to a list.
+/// Model to Add users to a list.
 class UserData {
   List<User>? data;
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class DateContainer extends StatelessWidget {
+// Blue colored Container that takes [text].
+class BlueContainer extends StatelessWidget {
   final String text;
 
-  const DateContainer({super.key, required this.text});
+  const BlueContainer({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

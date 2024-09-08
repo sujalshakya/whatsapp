@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsapp/base/provider/user_provider.dart';
+import 'package:whatsapp/base/provider/user_viewmodel.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/chats.dart';
 
 class HomeBody extends StatelessWidget {
@@ -13,6 +13,7 @@ class HomeBody extends StatelessWidget {
     return TabBarView(children: [
       Column(
         children: [
+          /// List of previous chats that shows user data.
           ChatsWidget(users: context.watch<UserViewModel>().users),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -63,7 +64,8 @@ class HomeBody extends StatelessWidget {
           ),
         ],
       ),
-      // A list of pages in tabbar yet to be made.
+
+      /// A list of pages for tabbar yet to be made.
       const SizedBox(),
       const SizedBox(),
       const SizedBox(),

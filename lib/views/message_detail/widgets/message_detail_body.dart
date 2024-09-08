@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/ui_toolkits/text/text_labellarge.dart';
 import 'package:whatsapp/views/message_detail/viewmodel/message_viewmodel.dart';
-import 'package:whatsapp/views/message_detail/widgets/date_container.dart';
+import 'package:whatsapp/views/message_detail/widgets/blue_container.dart';
 import 'package:whatsapp/views/message_detail/widgets/messages_widget.dart';
 import 'package:whatsapp/views/message_detail/widgets/send_message.dart';
 
@@ -17,8 +17,7 @@ class MessageDetailBody extends StatelessWidget {
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.onError),
       child: Column(
         children: [
-          // Blue colored container with text.
-          const DateContainer(text: 'SEPTEMBER 05, 2024'),
+          const BlueContainer(text: 'SEPTEMBER 05, 2024'),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Container(
@@ -62,20 +61,20 @@ class MessageDetailBody extends StatelessWidget {
             ),
           ),
 
-          // Divider
+          /// Divider
           Container(
             width: double.infinity,
             height: 0.5,
             color: Theme.of(context).colorScheme.onSurface,
           ),
-          const DateContainer(
+          const BlueContainer(
             text: 'TODAY',
           ),
 
-          // Shows messages alternatingly in different colors.
           MessagesWidget(messages: context.watch<MessageViewModel>().messages),
 
-          // The row of textfield with button to add text to messages list and floating action button.
+          /// The row of widgets with textfield, button and floating action button.
+          /// The button adds controller text to messages list
 
           const SendMessage()
         ],

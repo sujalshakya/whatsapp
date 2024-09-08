@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A custom textfield requiring [controller] and [validator].
+
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,

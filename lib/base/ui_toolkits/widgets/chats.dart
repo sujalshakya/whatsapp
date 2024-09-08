@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/base/models/user.dart';
-import 'package:whatsapp/base/provider/user_provider.dart';
+import 'package:whatsapp/base/provider/user_viewmodel.dart';
 import 'package:whatsapp/base/ui_toolkits/widgets/message.dart';
+
+/// This is used to build list of user chats.
+/// Requires [users] which is list of user data.
 
 class ChatsWidget extends StatelessWidget {
   const ChatsWidget({

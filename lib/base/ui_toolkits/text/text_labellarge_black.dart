@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Fontsize is 14.
 class TextLabellargeBlack extends StatelessWidget {
   final String text;
 
