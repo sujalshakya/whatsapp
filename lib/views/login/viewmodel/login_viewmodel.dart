@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/service/route_service.dart';
-import 'package:whatsapp/base/service/snackbar_service.dart';
+import 'package:whatsapp/base/viewmodel/base_viewmodel.dart';
 import 'package:whatsapp/views/login/models/login_request_model.dart';
 import 'package:whatsapp/views/login/repository/login_repository_implementation.dart';
 
-class LoginViewModel extends ChangeNotifier {
+class LoginViewModel extends BaseViewmodel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final loginKey = GlobalKey<FormState>();
@@ -21,8 +21,7 @@ class LoginViewModel extends ChangeNotifier {
     final loginRequestModel = LoginRequestModel(
         username: emailController.text, password: passwordController.text);
     if (loginKey.currentState!.validate()) {
-      final bool login =
-          await loginRepo.login(emailController.text, passwordController.text);
+      final bool login = await loginRepo.login(loginRequestModel);
 
       /// Manually clear controllers before navigating.
       if (login == true) {
@@ -30,14 +29,11 @@ class LoginViewModel extends ChangeNotifier {
         passwordController.clear();
 
         navigatorKey.currentState!.restorablePushReplacementNamed('home');
-        SnackBarService.showSnackBar(
+        showSnackBar(
           content: "Login Successful",
         );
-        notifyListeners();
       } else {
         debugPrint("login failed");
-
-        notifyListeners();
       }
 
       notifyListeners();

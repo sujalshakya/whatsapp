@@ -1,17 +1,12 @@
-import 'dart:convert';
-
+import 'package:whatsapp/views/login/models/login_request_model.dart';
 import 'package:whatsapp/views/login/repository/login_repository.dart';
 import 'package:whatsapp/views/login/service/login_service.dart';
 
 interface class LoginRepositoryImplementation implements LoginRepository {
   @override
-  Future<bool> login(String email, String password) async {
+  Future<bool> login(LoginRequestModel loginRequestModel) async {
     try {
-      String data = jsonEncode(<String, String>{
-        'username': email,
-        'password': password,
-      });
-      await AuthService.loginApiRequest(data);
+      await AuthService.loginApiRequest(loginRequestModel);
 
       return true;
     } catch (e) {

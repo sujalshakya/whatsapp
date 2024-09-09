@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
+final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+
 /// Show snackbar from anywhere without context.
-
-class SnackBarService {
-  static final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
-
+mixin class SnackBarService {
   static void showSnackBar({required String content}) {
     scaffoldKey.currentState?.showSnackBar(SnackBar(
       content: Text(content),
     ));
-  }
-
-  void dispose() {
-    scaffoldKey.currentState!.dispose();
   }
 }

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 class RegisterRequest {
-  String username;
+  String email;
   String password;
   String fullName;
 
   RegisterRequest({
-    required this.username,
+    required this.email,
     required this.password,
     required this.fullName,
   });
@@ -18,13 +18,13 @@ class RegisterRequest {
 
   factory RegisterRequest.fromJson(Map<String, dynamic> json) =>
       RegisterRequest(
-        username: json["username"],
+        email: json["email"],
         password: json["password"],
         fullName: json["full_name"],
       );
 
   Map<String, dynamic> toJson() => {
-        "username": username,
+        "email": email,
         "password": password,
         "full_name": fullName,
       };

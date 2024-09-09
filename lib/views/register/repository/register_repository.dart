@@ -1,3 +1,5 @@
+import 'package:whatsapp/views/register/models/register_request_model.dart';
+
 abstract class RegisterRepository {
-  Future<bool> register(String email, String fullName, String password);
+  Future<bool> register(RegisterRequest registerRequest);
 }

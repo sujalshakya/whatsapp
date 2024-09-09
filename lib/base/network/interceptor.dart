@@ -26,6 +26,7 @@ class DioInterceptor extends Interceptor {
   }
 
   /// Print status code after every api response.
+  /// Save token to secure storage if response contains token.
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
     String res = response.toString();

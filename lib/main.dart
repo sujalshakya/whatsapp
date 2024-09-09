@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         theme: themeProvider.getTheme,
         title: 'Flutter Demo',
-        scaffoldMessengerKey: SnackBarService.scaffoldKey,
+        scaffoldMessengerKey: scaffoldKey,
         debugShowCheckedModeBanner: false,
         routes: {
           'home': (context) => const HomeView(),

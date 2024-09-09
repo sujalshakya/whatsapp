@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/service/route_service.dart';
-import 'package:whatsapp/base/service/snackbar_service.dart';
+import 'package:whatsapp/base/viewmodel/base_viewmodel.dart';
+import 'package:whatsapp/views/register/models/register_request_model.dart';
 import 'package:whatsapp/views/register/repository/register_repository_implementation.dart';
 
-class RegisterViewModel extends ChangeNotifier {
+class RegisterViewModel extends BaseViewmodel {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -18,9 +19,12 @@ class RegisterViewModel extends ChangeNotifier {
   }
 
   void registerApiRequest() async {
+    final registerRequest = RegisterRequest(
+        email: emailController.text,
+        password: passwordController.text,
+        fullName: fullNameController.text);
     if (registerKey.currentState!.validate()) {
-      final bool register = await registerRepo.register(emailController.text,
-          passwordController.text, fullNameController.text);
+      final bool register = await registerRepo.register(registerRequest);
 
       /// Manually clear controllers before navigating.
       if (register) {
@@ -28,7 +32,7 @@ class RegisterViewModel extends ChangeNotifier {
         passwordController.clear();
         fullNameController.clear();
         navigatorKey.currentState!.pushNamed('login');
-        SnackBarService.showSnackBar(
+        showSnackBar(
           content: "Registration Successful",
         );
       } else {
