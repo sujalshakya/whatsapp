@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 /// Creates a custom textfield.
 class CustomTextField extends StatelessWidget {
-  /// Requires [controller] which is the text written in text field.
-  /// Requires [validator] which is the rules to be followed while submitting [controller].
+  /// Requires [controller].
+  /// Requires [validator].
 
   const CustomTextField({
     super.key,
+
+    /// Text written in text field.
     required this.controller,
+
+    /// The rules to be followed while submitting [controller].
     required this.validator,
   });
 

@@ -34,12 +34,23 @@ class DioInterceptor extends Interceptor {
   @override
   Future<void> onError(err, handler) async {
     debugPrint(err.toString());
-    if (err.response?.statusCode == 400) {
-      SnackBarService.showSnackBar(content: "Client Error");
-    }
-
-    if (err.response?.statusCode == 500) {
-      SnackBarService.showSnackBar(content: "Internal Server Error");
+    switch (err.response?.statusCode) {
+      case 400:
+        SnackBarService.showSnackBar(content: "Bad Request");
+      case 401:
+        SnackBarService.showSnackBar(content: "UnAuthorized");
+      case 403:
+        SnackBarService.showSnackBar(content: "Forbidden");
+      case 404:
+        SnackBarService.showSnackBar(content: "Not Found");
+      case 429:
+        SnackBarService.showSnackBar(content: "Too Many Requests");
+      case 502:
+        SnackBarService.showSnackBar(content: "Bad Gateway");
+      case 504:
+        SnackBarService.showSnackBar(content: "UnAuthorized");
+      case 500:
+        SnackBarService.showSnackBar(content: "Internal Server Error");
     }
   }
 }

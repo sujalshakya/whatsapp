@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Shows messages alternatingly in different colored containers.
 
 class MessagesWidget extends StatelessWidget {
-  /// Requires [messages] which is a list of texts added by the user.
+  /// Requires [messages].
   /// The odd indexed message in [messages] which signifies message
   /// sent to user is [ColorScheme.surface] in color.
   /// The even indexed message in [messages] which signifies message
@@ -13,6 +13,7 @@ class MessagesWidget extends StatelessWidget {
     required this.messages,
   });
 
+  /// List of texts added by the user
   final List<String> messages;
 
   @override

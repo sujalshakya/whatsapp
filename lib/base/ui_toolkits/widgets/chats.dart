@@ -9,14 +9,13 @@ import 'package:whatsapp/base/ui_toolkits/widgets/message.dart';
 class ChatsWidget extends StatelessWidget {
   /// Creates individual ListView by using the [MessageWidget]
   /// Uses the index in list to separate data of each widget.
-
+  /// Requires [users]
   const ChatsWidget({
     super.key,
     required this.users,
   });
 
-  /// Requires [users] which is list of user data.
-
+  /// List of user data.
   final UserData users;
 
   @override

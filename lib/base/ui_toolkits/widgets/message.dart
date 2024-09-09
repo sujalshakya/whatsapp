@@ -4,13 +4,18 @@ import 'package:whatsapp/base/ui_toolkits/text/text_labelsmall.dart';
 
 /// An individual chat box.
 class MessageWidget extends StatelessWidget {
+  /// Text containing users first name.
   final String firstName;
+
+  /// URL of profile picture converted to image using [NetworkImage].
   final String avatar;
+
+  /// Text containing users last name.
   final String lastName;
 
-  /// Requires [firstName] which is shown as [text].
-  /// Requires [avatar] which is used to show profile picture by converting url to image.
-  /// Requires [lastName] which is shown as [text].
+  /// Requires [firstName]
+  /// Requires [avatar
+  /// Requires [lastName]
   const MessageWidget(
       {super.key,
       required this.firstName,
