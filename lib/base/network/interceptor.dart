@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/base/service/secure_storage.dart';
@@ -25,7 +27,12 @@ class DioInterceptor extends Interceptor {
 
   /// Print status code after every api response.
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
+  void onResponse(Response response, ResponseInterceptorHandler handler) async {
+    String res = response.toString();
+    if (res.contains("token")) {
+      var login = jsonDecode(response.toString());
+      await SecureStorage().setToken('token', login['token']);
+    }
     debugPrint(response.statusCode.toString());
     super.onResponse(response, handler);
   }

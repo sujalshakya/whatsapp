@@ -9,6 +9,7 @@ class LoginViewModel extends ChangeNotifier {
   final TextEditingController passwordController = TextEditingController();
   final loginKey = GlobalKey<FormState>();
   final loginRepo = LoginRepositoryImplementation();
+
   @override
   void dispose() {
     super.dispose();
@@ -17,10 +18,11 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   void loginApiRequest() async {
+    final loginRequestModel = LoginRequestModel(
+        username: emailController.text, password: passwordController.text);
     if (loginKey.currentState!.validate()) {
       final bool login =
-          await loginRepo.login(  LoginRequest(username: emailController.text, password: password);
-);
+          await loginRepo.login(emailController.text, passwordController.text);
 
       /// Manually clear controllers before navigating.
       if (login == true) {
